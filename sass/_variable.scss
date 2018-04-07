@@ -1,0 +1,194 @@
+/*
+ Table Of Contents
+ 
+ 1). Font-family
+ 2). Font-size
+ 3). Font-color
+ 4). font-weight
+ 5). Background-color
+ 6). Gredient
+ 6). Border-color
+ 7). Alignment
+ ===============================================*/
+/*
+ 1). Font-family
+ -------------------------*/
+$primary-fontfamily:"HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+
+
+
+
+/*
+ 2). Font-color
+ -------------------------*/
+$white-color:#fff;
+$body-color:#000;
+$black-color:#000000;
+$grey-color:#ededed;
+$blue-color:#0538ae;
+$grey-tent-bg-color: #f7f6f5;
+$grey-color-link: #919191;
+
+
+/*
+ 3). Font-size
+ -------------------------*/
+$base-font:1.5rem;
+
+/*
+ 4). Font-weight
+ -------------------------*/
+$font-weight-light:300;
+$font-weight-regular:400;
+$font-weight-medium:500;
+$font-weight-semibold:600;
+$font-weight-bold:700;
+
+/*
+ 3). Background color
+ -------------------------*/
+
+
+/*
+6). Border-color
+ -------------------------*/
+
+/*
+ 1). Alignment
+ -------------------------*/
+$align-center:center;
+$align-left:left;
+
+
+
+/*
+ Craft Colors
+ -------------------------*/
+$colors : (
+        fashion: #ec1b7a,
+        art: #3b91cf,
+        music: #924599,
+        film: #bcc632,
+        beauty: #e9a222,
+        makeup: #e9a222,
+        hair: #e9a222,
+        tech: #ee5b27,
+        performance: #3ab54a,
+        photography: #821647,
+        accessories: #3e59a8,
+        craft: #008080
+);
+
+/*
+ profile layout width & font controls
+ -------------------------*/
+ $profile: (
+  picW: 300px,
+  profileName: 100%,
+  ticketInfo: 50em,
+  ticketwrap: 32em,
+  profileMobileName: 2.4em,
+  profileW: 1200px
+);
+
+$page_sizes: (
+  fixed : 1200px
+);
+
+
+/*
+ short pages backgroundImage height controls
+ -------------------------*/
+ $shortBg: (
+  picBgH: 355px
+);
+
+/**
+Response font sizes
+
+i.e. rf-s
+ */
+$r_font_sizes: (
+        xs: .5vh,
+        s: 1vh,
+        sms:1.5hv,
+        m: 2vh,
+        l: 3vh,
+        xls: 4vh,
+        xl: 5vh,
+);
+
+@each $size, $value in $r_font_sizes {
+
+  .rf-#{$size} {
+    font-size: #{$value};
+  }
+
+}
+
+
+
+
+/*
+ Padding
+ -------------------------*/
+$spaces:
+        (
+                xxs: .01%,
+                xs: .5%,
+                s: 1%,
+                m: 2.5%,
+                l: 5%,
+                xl: 10%,
+
+
+        );
+
+
+@each $size, $value in $spaces {
+
+  .m-#{$size} {
+    margin: #{$value};
+  }
+
+  .m-t-#{$size} {
+    margin-top: #{$value};
+  }
+
+  .m-r-#{$size} {
+    margin-right: #{$value};
+  }
+
+  .m-b-#{$size} {
+    margin-bottom: #{$value};
+  }
+
+  .m-l-#{$size} {
+    margin-left: #{$value};
+  }
+
+
+
+  .p-#{$size} {
+    padding: #{$value};
+  }
+
+  .p-t-#{$size} {
+    padding-top: #{$value};
+  }
+
+  .p-r-#{$size} {
+    padding-right: #{$value};
+  }
+
+  .p-b-#{$size} {
+    padding-bottom: #{$value};
+  }
+
+  .p-l-#{$size} {
+    padding-left: #{$value};
+  }
+
+}
+
+
