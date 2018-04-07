@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<title>andre slider example</title>
+	<meta charset="utf-8">
+
+	<style>
+		.slider {
+		  overflow: hidden;
+		  position: relative;
+		  width: 100%;
+		  height: 300px;
+		  border: 1px solid red;
+		}
+
+		.slides {
+		  width: 100%;
+		  height: 100%;
+		  position: absolute;
+		}
+
+		.slides {
+		  display: none;
+		}
+
+		.active {
+		  display: block;
+		}
+
+		.red {
+		  color: red;
+		}
+
+		.bubbles {
+		  overflow: hidden;
+		}
+
+		.bubbles .bubble {
+		  display: inline-block;
+		  padding-left: 20px;
+		  cursor: pointer;
+		}
+
+		.next{
+		  margin-top: 10px;
+		}
+	</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+	</head>
+	<body>
+		<p>
+		my slider with bubbles
+		</p>
+		<section class="slider">
+		  <div class="slides active">
+		    #1 
+		  </div>
+		  <div class="slides">
+		    #2
+		  </div>
+		  <div class="slides">
+		    #3
+		  </div>
+		</section>
+		
+		<div class="bubbles">
+		  <div id="bubble-1" class="bubble red">
+		    bubble
+		  </div>
+		  <div id="bubble-2" class="bubble">
+		    bubble
+		  </div>
+		  <div id="bubble-3" class="bubble">
+		    bubble
+		  </div>
+		</div>
+
+
+		<button class="next">next</button>
+
+
+	<script>
+		$(document).ready(function(){
+
+			$('.next').on('click', function() {
+
+			  var currentSlides = $('.slides.active');
+			  var nextSlides = currentSlides.next();
+			  var currentBubbles = $('.bubble.red');
+			  var nextBubbles = currentBubbles.next();
+
+			  $(currentSlides).fadeOut(300).removeClass('active');
+			  $(nextSlides).fadeIn(300).addClass('active');
+
+			  $(currentBubbles).removeClass('red');
+			  $(nextBubbles).addClass('red');
+
+			  if (nextSlides.length == 0 && nextBubbles.length == 0) {
+			    $('.slides').first().fadeIn(300).addClass('active');
+			    $('.bubble').first().addClass('red')
+			  }
+
+			});
+
+			$('#bubble-1').on('click', function() {
+			    $('.slides.active').fadeOut(300).removeClass('active');
+			    $('.slides').first().fadeIn(300).addClass('active');
+			    $('.bubble.red').removeClass('red');
+			    $('.bubble').first().addClass('red');
+			});
+
+
+			$('#bubble-2').on('click', function() {
+			    $('.slides.active').fadeOut(300).removeClass('active');
+			    $('.slides').first().next().fadeIn(300).addClass('active');
+			    $('.bubble.red').removeClass('red');
+			    $('.bubble').first().next().addClass('red');
+			});
+
+
+			$('#bubble-3').on('click', function() {
+			    $('.slides.active').fadeOut(300).removeClass('active');
+			    $('.slides').first().next().next().fadeIn(300).addClass('active');
+			    $('.bubble.red').removeClass('red');
+			    $('.bubble').first().next().next().addClass('red');
+			  
+			});
+
+		//do not pass	
+		});
+	</script>
+
+	</body>
+</html>

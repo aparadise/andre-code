@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<title>andre es6 remove class</title>
+	<meta charset="utf-8">
+
+	<style>
+		 ul {
+		   list-style: none;
+		   padding: 0;
+		 }
+		 
+		 li {
+		   display: inline-block;
+		   width: 100px;
+		   background-color: red;
+		   cursor: pointer;
+		 }
+		 
+		 li.current {
+		   background-color: green;
+		 }
+
+	</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+	</head>
+	<body>
+		es6 add and remove class
+		<ul id="menu">
+		  <li class="current">one</li>
+
+		  <li>two</li>
+
+		  <li>three</li>
+		</ul>
+
+
+	<script>
+		$(document).ready(function(){
+
+			var elements = document.querySelectorAll("#menu > li");
+
+			for (var i = 0; i < elements.length; i++) {
+
+			  Array.from(elements).forEach(element => { 
+			      element.addEventListener('click', function(){
+			     $('li').removeClass('current');
+			    $(this).addClass('current');   
+			      });      
+			    });
+			}
+		//do not pass	
+		});
+	</script>
+
+	</body>
+</html>

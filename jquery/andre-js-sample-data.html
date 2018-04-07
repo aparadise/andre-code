@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<title>andre data example show/hide </title>
+	<meta charset="utf-8">
+
+	<style>
+		ul {
+		  list-style: none;
+		}
+
+		li {
+		  display: inline-block;
+		  padding: 20px;
+		  border: 1px solid black;
+		  cursor: pointer;
+		}
+		.active {
+		  background-color: #ccc;
+		}
+
+		#mytab-tab2,
+		#mytab-tab3 {
+		  display: none;
+		}
+		.wrap {
+		  overflow: hidden;
+		  border: 1px solid red;
+		  width: 300px;
+		}
+	</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+	</head>
+	<body>
+
+		Show/hide using data attr.
+		
+	<ul class="foo">
+	  <li class="tabs" data-mytab="tab1">tab1</li>
+	  <li class="tabs" data-mytab="tab2">tab2</li>
+	  <li class="tabs" data-mytab="tab3">tab3</li>
+	</ul>
+
+	<div class="wrap">
+	  <div id="mytab-tab1" class="content">
+	    1
+	  </div>
+	  <div id="mytab-tab2" class="content">
+	    2
+	  </div>
+	  <div id="mytab-tab3" class="content">
+	    3
+	  </div>
+	</div>
+
+
+	<script>
+		$(document).ready(function(){
+			const trigger = $('ul li.tabs');
+
+			trigger.on("click", function() {
+			  const el = $(this);
+			  //or
+			  const el2 = $(this).attr('data-mytab');
+			 
+			  $('ul li.tabs').removeClass('active'); 
+			  el.addClass('active'); 
+				$("#mytab-"+el.data("mytab")).show().siblings().hide();
+			});
+
+		//do not pass	
+		});
+	</script>
+
+	</body>
+</html>

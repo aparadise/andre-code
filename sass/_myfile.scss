@@ -1,0 +1,136 @@
+.jobs {
+    .hero{
+        display: flex; 
+        margin: auto;
+        max-width: 100%;
+        height: 602px; 
+        background-image: url('/themes/rawartists/img/jobs/teamphoto.jpg');
+        background-repeat: no-repeat;
+        background-size: cover; 
+        h1 {
+           flex: 1;
+           align-items: center; 
+           align-self: center;
+           justify-content: center;
+           text-align: center;
+           color: $white-color;
+           font-size: 4em;
+           font-weight: bold;
+        }
+    }
+    .ticketwrap {
+        display: block;
+        max-width: map-get($profile, ticketwrap);
+        margin: auto;
+        padding: 2em;
+    }
+    .buyTickets {
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    .btn {
+        color: #000;
+        border: 1px solid #000;
+    }
+    .jobHeadline {
+        padding: 2em;
+        line-height: 2em;
+        color: $black-color;  
+     }
+     .jobBlocks {
+        width: map-get($profile, profileW);
+        margin: auto;
+        padding: 0 2em 2em 2em; 
+        text-align: center;
+     }
+     .creativeCallOut {
+       h1,
+        span,
+        p {
+            color: $black-color;
+        }
+     }
+     li {
+        &.nav-item {
+            font-size: 1.8em;
+        }
+    }
+    .profileBar {
+        /* bootstrap tab overides */
+        .nav-tabs .nav-link.active {
+            color: $black-color;
+            font-weight: bold;
+            border-bottom: 3px solid $black-color;
+        }
+        .nav-tabs .nav-link:hover {
+            /*border-color: transparent;*/
+            color: $black-color;
+            font-weight: bold;
+          }
+          .nav-tabs .nav-link {
+            border-top-left-radius: .25rem;
+            border-top-right-radius: .25rem;
+            font-weight: normal;
+          }
+          /*end of bootstrap tab overides*/
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .jobs {
+        .jobBlocks {
+            padding: 0 2em 2em 2em;
+            .row {
+                div {
+                    padding: 1em 0;
+                }
+            } 
+        } 
+        .creativeCallOut {
+            padding: 2em;
+        }
+        .profileBar {
+            margin-top: -3em;
+        }
+        .creativeCallOutTitle {
+           text-decoration-line: underline;
+           font-size: 1.5em;
+           font-weight: bold;
+     }
+   }
+}
+
+@media screen and (max-width: 991px) {
+    .jobs {
+        h1 {
+            font-size: 5em;
+            font-weight: bold;
+        }
+        .hero {
+            background-image: linear-gradient(rgba(255,20, 47,0.45), rgba(255,20, 47,0.45)), url('/themes/rawartists/img/jobs/teamphoto.jpg');
+          }
+        .profileBar {
+            width: 100%;
+            .nav-tabs {
+                text-align: center;
+            }
+        }
+        li {
+            &.nav-item {
+                width: 100%;
+                font-size: 1em;
+            }
+        }
+   }
+}
+
+@media screen and (max-width: 1024px) {
+    .jobs {
+        li.nav-item {
+        font-size: 1.6em;
+        }
+        .jobBlocks {
+            width: 100%;
+        }    
+    }
+}

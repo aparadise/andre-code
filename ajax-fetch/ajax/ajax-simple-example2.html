@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<title>andre ajax</title>
+	<meta charset="utf-8">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+	</head>
+	<body>
+ajax
+
+
+	<script>
+		$(document).ready(function(){
+			 $("button").on('click', function(){
+		        $.ajax({
+		            type: 'POST',
+		            url:'oneObject.json',
+		            dataType:'json',
+		            success: function(obj){
+		            $.each(obj, function(key, value){          
+		                      $('ul').append('<li>' + value +'</li>');          
+		             });
+		           }
+		        });  
+     		});  
+		//do not pass	
+		});
+	</script>
+
+	</body>
+</html>

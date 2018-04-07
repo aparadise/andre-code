@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<title>andre es5 prototyping</title>
+	<meta charset="utf-8">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+	</head>
+	<body>
+	prototyping
+
+
+	<script>
+
+			 function P(){}; //this function will be empty as I will pass methods to it by prototyping
+		   
+		    P.prototype.mpg = "35"; 
+		    P.prototype.car = function(){
+		       alert(this.mpg);
+		    }
+    
+		    var t = new P();
+		    t.car(); 
+		    var c = new P();
+		        c.mpg = "65";
+		        c.car();
+		  
+   
+	</script>
+
+	</body>
+</html>

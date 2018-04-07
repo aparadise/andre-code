@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<title>andre canvas example</title>
+	<meta charset="utf-8">
+	<style>
+		#output {
+			background-color: beige;
+			font-size: 24px;
+			padding: 10%;
+		}
+		#canvas1 {
+			border: thin solid black;
+		}
+	</style>
+	</head>
+	<body>
+		<div id="container">
+			OUTPUT:
+			<canvas id="canvas1">Text for no HTML5</canvas>
+			<BR>
+			<img id="myimage" src="download.jpg">
+			<div id="output">Nothing Yet</div>
+		</div>
+
+	<script>
+		var output = document.getElementById('output');
+		var canvas = document.getElementById('canvas1');
+		var myImg = document.getElementById('myimage');
+		canvas.width = 800;
+		canvas.height = 600;
+		canvas.style.width = 800;
+		canvas.style.height = 600;
+		var ctx = canvas.getContext('2d');
+		ctx.fillStyle = 'red';
+		//ctx.fillRect(50,20,100,100);
+		ctx.linewidth = 10;
+		ctx.strokeStyle = 'blue';
+		//ctx.strokeRect(50,20,300,100);
+		ctx.beginPath();
+		ctx.moveTo(100, 50);
+		ctx.lineTo(500, 50);
+		ctx.lineTo(300, 250);
+		ctx.lineTo(100, 50);
+		ctx.stroke();
+		ctx.fill();
+		ctx.closePath();
+		ctx.fillStyle = 'rgba(0,255,0,0.9)';
+		ctx.beginPath();
+		ctx.arc(400, 300, 250, 0, 2 * Math.PI);
+		ctx.fill();
+		ctx.closePath();
+		ctx.fillStyle = 'black';
+		ctx.font = '40px Arial';
+		//ctx.fillText('andre',200,200);
+		ctx.strokeText('Andre', 200, 200);
+		output.innerHTML = 'new content';
+	</script>
+
+	</body>
+</html>

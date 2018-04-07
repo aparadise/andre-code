@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>AJAX-simple fetch examples</title>
+
+    <style>
+    #btn {
+        border: 1px solid black;
+        padding: 10px;
+    }
+    
+    .joke {
+        display: block;
+        padding: 5px;
+        margin-top: 10px;
+    }
+    img{max-width:100px;}
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+</head>
+
+<body>
+    
+
+<div id="btn">Click Me</div>
+<div id="output"></div>
+
+    <script>
+    $(document).ready(function () {
+        $("#btn").click(function () {
+            $.getJSON("https://api.mixcloud.com/popular/", function (data) {
+                console.log(data);
+                $.each(data.data,function(i,key){
+                    console.log(key);
+                    $('#output').append('<div class="joke">' + key["name"] + '<img src="'+key.pictures["320wx320h"]+'"></div>');
+                })
+                // key["name"] == key.name
+
+            })
+        })
+    })
+</script>
+</body>
+
+</html>
