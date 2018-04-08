@@ -1,0 +1,50 @@
+
+JavaScript - .map()
+
+<script>
+    //this way is vanilla JS without the .map()
+    var someArray = [4, 9, 25];
+    finalArray = [];
+
+    for (var i = 0; i < someArray.length; i++) {
+    //finalArray.push( someArray[i] );
+    finalArray.push(someArray[i] + 2);
+    }
+
+    console.log(finalArray);
+
+    //this way is easier using the built in .map();
+    finalArray = someArray.map(function(value) { //name your passing can be called anyting 'value' or 'x'
+    return value + 10;
+    });
+
+    console.log(finalArray);
+
+    //you can also right function to pass through the map
+
+    finalArray = someArray.map(myFunc); // you can also pass in a built in function "Math.sqrt"
+
+    function myFunc(val) {
+    return val * 10;
+    }
+    console.log(finalArray);
+
+    // you can and also pass in a built in function "Math.sqrt"
+    finalArray = someArray.map(Math.sqrt);
+    console.log(finalArray);
+
+    //you .map() and object 
+    var someArray2 = [{fname: "andre", lname: "paradise", age: 29}, {fname: "tony", lname: "dillion", age: 35}, {fname: "troy", lname: "aikman", age: 49}];
+
+    var finalArray2 = [];
+
+    finalArray2 = someArray2.map(function(myVal) {
+    var temp = [];
+    temp.push(myVal.age);
+    return temp;
+    });
+
+    console.log(finalArray2 + ' are the ages');
+
+    //you can run a filter on your map function
+    </script>
