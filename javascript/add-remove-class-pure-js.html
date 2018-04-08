@@ -1,0 +1,19 @@
+<button id="one" onclick="foo1();">
+       pure js add class
+</button>
+
+<button id="two" onclick="foo2();">
+       pure js remove class
+</button>
+
+<script>
+    function foo1() {
+        document.getElementById("one").classList.add("hidden");
+        alert(1);
+    }
+
+    function foo2() {
+        document.getElementById("two").classList.remove("hidden");
+        alert(2);
+    }
+</script>
