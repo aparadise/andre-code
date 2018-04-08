@@ -1,0 +1,229 @@
+<style>
+    #myChart {
+  border: 1px solid red;
+  overflow: hidden;
+  max-width: 700px;
+  margin: 0px;
+  padding: 10px;
+}
+
+@media(max-width: 320px){
+  #myChart {
+    border: 1px solid green;
+  }
+}
+</style>
+
+
+
+<div id="myChart"></div>
+
+
+<script>
+    var myConfig = {
+  "type": "hbar",
+
+  "labels": [{ //Label One
+      "text": "Subscribers Gained",
+      "font-family": "Georgia",
+      "font-color": "black",
+      "font-size": "12",
+      "x": "42%",
+      "y": "-5px"
+    }, { //Label Two
+      "text": "Views",
+      "font-family": "Georgia",
+      "font-color": "green",
+      "font-size": "12",
+      "x": "85%",
+      "y": "-5px"
+    }, { //Label Three
+      "text": "Subscribers Lost",
+      "font-color": "red",
+      "font-family": "Georgia",
+      "font-size": "14",
+      "x": "1%",
+      "y": "-6px"
+    },
+
+  ],
+  scaleX: {
+	  transform: {
+ 	    type: 'date',
+ 	    all: '%M %mm %Y, %g:%i %a'
+ 	  },
+
+  },
+  "plot": {
+   barWidth:"7px",
+    "value-box": {
+      short:true,
+    decimals:0,
+      "placement": "top",
+      "font-family": "Georgia",
+      "font-size": 10,
+      "font-weight": "normal"
+      /*"alpha":0.7,
+            "border-width":2,
+            "border-color":"black",
+            "border-radius-top-left":5,
+            "border-radius-top-right":5*/
+    }
+  },
+  "plotarea": {
+    margin: 'dynamic'
+  },
+  "series": [{
+    backgroundColor: 'black',
+    values: [
+      [Date.UTC(2017, 6, 2, 0, 0), 1450],
+
+      [Date.UTC(2017, 6, 9, 0, 0), 5169],
+
+      [Date.UTC(2017, 6, 16, 0, 0), 3893],
+
+      [Date.UTC(2017, 6, 23, 0, 0), 5117],
+
+      [Date.UTC(2017, 6, 30, 0, 0), 7268],
+
+      [Date.UTC(2017, 7, 6, 0, 0), 4307],
+
+      [Date.UTC(2017, 7, 13, 0, 0), 6245],
+
+      [Date.UTC(2017, 7, 20, 0, 0), 7616],
+
+      [Date.UTC(2017, 7, 27, 0, 0), 11956],
+
+      [Date.UTC(2017, 8, 3, 0, 0), 6364],
+
+      [Date.UTC(2017, 8, 10, 0, 0), 8016],
+
+      [Date.UTC(2017, 8, 17, 0, 0), 4881],
+
+      [Date.UTC(2017, 8, 24, 0, 0), 5380],
+
+      [Date.UTC(2017, 9, 1, 0, 0), 6768],
+
+      [Date.UTC(2017, 9, 8, 0, 0), 6464],
+
+      [Date.UTC(2017, 9, 15, 0, 0), 3412],
+
+      [Date.UTC(2017, 9, 22, 0, 0), 4009],
+
+      [Date.UTC(2017, 9, 29, 0, 0), 6356],
+
+      [Date.UTC(2017, 10, 5, 0, 0), 5898],
+
+      [Date.UTC(2017, 10, 12, 0, 0), 6798],
+
+      [Date.UTC(2017, 10, 19, 0, 0), 16547],
+
+      [Date.UTC(2017, 10, 26, 0, 0), 7585]
+    ],
+  }, {
+    backgroundColor: 'red',
+
+    values: [
+      [Date.UTC(2017, 6, 2, 0, 0), -232],
+
+      [Date.UTC(2017, 6, 9, 0, 0), -645],
+
+      [Date.UTC(2017, 6, 16, 0, 0), -625],
+
+      [Date.UTC(2017, 6, 23, 0, 0), -602],
+
+      [Date.UTC(2017, 6, 30, 0, 0), -738],
+
+      [Date.UTC(2017, 7, 6, 0, 0), -680],
+
+      [Date.UTC(2017, 7, 13, 0, 0), -665],
+
+      [Date.UTC(2017, 7, 20, 0, 0), -718],
+
+      [Date.UTC(2017, 7, 27, 0, 0), -741],
+
+      [Date.UTC(2017, 8, 3, 0, 0), -637],
+
+      [Date.UTC(2017, 8, 10, 0, 0), -583],
+
+      [Date.UTC(2017, 8, 17, 0, 0), -690],
+
+      [Date.UTC(2017, 8, 24, 0, 0), -623],
+
+      [Date.UTC(2017, 9, 1, 0, 0), -651],
+
+      [Date.UTC(2017, 9, 8, 0, 0), -667],
+
+      [Date.UTC(2017, 9, 15, 0, 0), -563],
+
+      [Date.UTC(2017, 9, 22, 0, 0), -617],
+
+      [Date.UTC(2017, 9, 29, 0, 0), -573],
+
+      [Date.UTC(2017, 10, 5, 0, 0), -688],
+
+      [Date.UTC(2017, 10, 12, 0, 0), -736],
+
+      [Date.UTC(2017, 10, 19, 0, 0), -892],
+
+      [Date.UTC(2017, 10, 26, 0, 0), -643]
+    ],
+  }, {
+    backgroundColor: 'green',
+    values: [
+      [Date.UTC(2017, 6, 2, 0, 0), 209060],
+
+      [Date.UTC(2017, 6, 9, 0, 0), 631732],
+
+      [Date.UTC(2017, 6, 16, 0, 0), 468454],
+
+      [Date.UTC(2017, 6, 23, 0, 0), 753779],
+
+      [Date.UTC(2017, 6, 30, 0, 0), 1093693],
+
+      [Date.UTC(2017, 7, 6, 0, 0), 599158],
+
+      [Date.UTC(2017, 7, 13, 0, 0), 904408],
+
+      [Date.UTC(2017, 7, 20, 0, 0), 982354],
+
+      [Date.UTC(2017, 7, 27, 0, 0), 1572166],
+
+      [Date.UTC(2017, 8, 3, 0, 0), 906383],
+
+      [Date.UTC(2017, 8, 10, 0, 0), 895086],
+
+      [Date.UTC(2017, 8, 17, 0, 0), 868698],
+
+      [Date.UTC(2017, 8, 24, 0, 0), 855498],
+
+      [Date.UTC(2017, 9, 1, 0, 0), 899416],
+
+      [Date.UTC(2017, 9, 8, 0, 0), 862074],
+
+      [Date.UTC(2017, 9, 15, 0, 0), 554650],
+
+      [Date.UTC(2017, 9, 22, 0, 0), 588412],
+
+      [Date.UTC(2017, 9, 29, 0, 0), 930918],
+
+      [Date.UTC(2017, 10, 5, 0, 0), 904418],
+
+      [Date.UTC(2017, 10, 12, 0, 0), 1003936],
+
+      [Date.UTC(2017, 10, 19, 0, 0), 2668826],
+
+      [Date.UTC(2017, 10, 26, 0, 0), 968731]
+    ],
+  }]
+
+};
+
+
+zingchart.render({
+  id: 'myChart',
+  data: myConfig,
+  height: 400,
+  width: "100%"
+});
+</script>
