@@ -1,0 +1,32 @@
+
+JavaScript - .filter()
+
+<script>
+let myArray = [2, 3, 4, 5, 10, 12, 13, 20, 22, 99, 16, 19];
+
+let results = myArray.filter((val) => {
+  return val < 20;
+});
+
+console.log(results);
+
+//return on the even numbers with the mod function
+
+let results2 = myArray.filter(myFunc);
+
+function myFunc(value) {
+  return value % 2 === 0;
+}
+console.log(results2);
+
+//filter only objects that have number NOT a string
+
+let myObj = [ {"name": "andre", "fname": "paradise", "age": 22}, {"name": "tania", "fname": "yamaguchi", "age": 15}, {"name": "gil", "fname": "kim", "age": "50"}  ];
+
+let results3 = myObj.filter((val) => {
+  return typeof val.age === 'number';
+});
+
+//console.log(results3); //this just give you back object. you need to JSON.stringify() to get the true resluts3
+console.log(JSON.stringify(results3)); //notice it only filtered the age object that was a number. 
+</script>
