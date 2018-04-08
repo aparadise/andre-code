@@ -1,0 +1,25 @@
+<div class="container">
+    <canvas id="myChart"></canvas>
+ <!--do not pass-->
+</div>
+ 
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+
+<script>
+let myChart = document.getElementById('myChart').getContext('2d');
+
+let massPopChart = new Chart(myChart, {
+  type: 'bar',
+  data: {
+    labels: ['Boston', 'Westchester'],
+    datasets: [{
+      label: 'populations',
+      data: [7773, 3333]
+    }]
+  },
+
+  options: {}
+});
+</script>    
