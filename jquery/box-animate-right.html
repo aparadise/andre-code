@@ -1,0 +1,61 @@
+<style>    
+ul {width:400px;list-style:none;}
+li {opacity:0;left:100%;position:relative;}
+</style>
+
+<div id='block_nav_wrapper'>
+    <div id='block_nav'>
+         <ul>
+            <li>item1</li>
+            <li>item2</li>
+            <li>item3</li>
+            <li>item4</li>
+            <li>item5</li>
+            <li>item6</li>
+            <li>item7</li>
+            <li>item8</li>
+            <li>item9</li>
+            <li>item10</li>
+            <li>item11</li>
+            <li>item12</li>
+            <li>item13</li>
+            <li>item14</li>
+            <li>item15</li>
+            <li>item16</li>
+            <li>item17</li> 
+            </ul>
+        </div>
+    </div>
+
+    <ul>
+            <li>List 1, Line 1</li>
+            <li>List 1, Line 2</li>
+            <li>List 1, Line 3</li>
+        </ul>
+        <ul>
+            <li>List 2, Line 1</li>
+            <li>List 2, Line 2</li>
+            <li>List 2, Line 3</li>
+        </ul>
+        <ul>
+            <li>List 2, Line 1</li>
+            <li>List 2, Line 2</li>
+            <li>List 2, Line 3</li>
+        </ul>
+
+<script>
+$(document).ready(function() {
+    var i = 0;
+    $('ul').each(function() {
+        var hide_after = $(this).children().length;
+        $(this).children().each(function(counter) {
+            $(this)
+            .delay(++i * 2000)
+            .animate({left:0, opacity:1})
+            .delay((hide_after - counter) * 2000)
+           // .animate({left:'100%', opacity: 0});
+        });
+    });
+});
+</script>
+      
