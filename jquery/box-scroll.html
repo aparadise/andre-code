@@ -1,0 +1,85 @@
+<style>    
+#block_nav_wrapper {
+    position: relative;
+    margin-bottom: 10px;
+	padding: 10px;
+	background: #EEAA22;
+	border: 1px solid #d49311;
+}
+
+#block_nav {
+	position: relative;
+	height: 80px;
+	margin: 10px;
+	overflow: hidden;
+}
+
+#block_nav ul {
+	position: relative;
+	margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#block_nav ul li {
+    position: relative;
+    display: inline-block;
+	width: 168px;
+	height: 20px;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+#nav_controls {
+	position: absolute;
+	right: 10px;
+    top: 25px
+}
+
+#nav_controls ul {
+    margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+</style>
+
+<div id='block_nav_wrapper'>
+        <div id='block_nav'>
+            <ul>
+                <li>item1</li>
+                <li>item2</li>
+                <li>item3</li>
+                <li>item4</li>
+                <li>item5</li>
+                <li>item6</li>
+                <li>item7</li>
+                <li>item8</li>
+                <li>item9</li>
+                <li>item10</li>
+                <li>item11</li>
+                <li>item12</li>
+                <li>item13</li>
+                <li>item14</li>
+                <li>item15</li>
+                <li>item16</li>
+                <li>item17</li> 
+            </ul>
+        </div>
+    </div>
+
+<div id='nav_controls'>
+<ul>
+    <li><button id='nav_up'>Up</button></li>
+</ul>
+</div>
+
+<script>
+    $(document).ready(function() {
+    $('#nav_up').on('click', function() {
+        $('#block_nav ul').animate({ top: '-=80' }, 'slow');
+        console.log($('#block_nav ul').offset());
+    });
+});
+</script>
+      
