@@ -1,0 +1,54 @@
+<style>
+button {
+  padding-top:10px;
+  padding-bottom:10px;
+}
+
+.reverse{
+  margin-top:10px;
+}
+
+</style>
+
+<button id="one" onclick="foo1();">
+       pure js add class
+</button>
+
+<button id="two" onclick="foo2();">
+       pure js remove class
+</button>
+<div id="carousel" class="test">
+    <ul>
+        <li class="one">one</li>
+        <li class="two">two</li>
+        <li class="three">three</li>
+        <li class="four">four</li>
+    </ul>
+</div>
+      
+<button class="foward">
+click FOWARD to move top element to the bottom
+</button>
+      
+<button class="reverse">
+click REVERSE to move bottom element to the top
+</button>
+      
+
+
+<script>
+    $(document).ready(function(){
+
+    var carouselSelect = "#carousel ul";
+
+    $('button.foward').click(function(){
+        $(carouselSelect).find("li:last").after($(carouselSelect).find("li:first"));
+    });
+
+    $('button.reverse').click(function(){
+        $(carouselSelect).find("li:first").before($(carouselSelect).find("li:last"));
+    });
+
+        //do not pass
+    });
+</script>
