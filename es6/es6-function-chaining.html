@@ -1,0 +1,18 @@
+<script>
+    let foo = 22;
+
+    class myname {
+        functionA() {
+        alert(1);
+        return this;
+        }
+        
+        functionB(x) {
+            alert(x);
+            return this;
+        }
+    }
+
+    const people = new myname();
+    alert( people.functionA().functionB(foo) );
+</script>
