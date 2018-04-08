@@ -1,0 +1,23 @@
+
+<button name="counter" class="count">
+Counter
+</button>
+        
+<div class="counts"></div>
+
+<script>
+$(document).ready(function(){
+    var c = 1;
+
+    $('.count').on('click', function(){
+    var total = c++;
+    if(total > 10){
+        return false;
+    }
+        $('.counts').html(total);
+    });
+
+//do not pass
+});
+
+</script>
