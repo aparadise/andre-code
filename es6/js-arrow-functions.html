@@ -1,0 +1,57 @@
+
+JavaScript - ES6 Arrow Functions
+
+
+<button id="myBtn">click</button>
+
+
+<a href="#">click</a>
+      
+<script>
+
+    $(document).ready(function(){
+
+        //example 1
+    document.getElementById("myBtn").addEventListener("click", () =>{
+        alert("Hello World!");
+    });
+
+
+
+        //example 2
+    let a = 10;
+    let foo1 = a => a;
+    alert(foo1(a));
+
+    // or 
+
+    let c = 10;
+    let d = 10;
+    let foo2 = (c, d) => c * d;
+    alert(foo2(c, d));
+
+
+
+        //example 3
+    var foo = 'regoer';
+
+    function xyz() {
+    alert(44);
+    }
+
+
+    $('a').click(() => {
+        let x = 3;
+        alert(foo);
+        xyz();
+        alert(x);
+        e.stopPropagation();
+        //e.stopPropagation();
+        //return false;
+    });
+
+//do not pass
+});
+</script>
+
+
