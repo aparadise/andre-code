@@ -1,0 +1,29 @@
+<style>
+  input.error {
+  border-color: red;
+}
+</style>
+
+<script>
+const inputs = document.querySelectorAll("input, select, textarea");
+
+inputs.forEach(input => {
+  input.addEventListener(
+    "invalid",
+    event => {
+      input.classList.add("error");
+    },
+    false
+  );
+});
+</script>
+
+<form action="/users/signup" method="post">
+    <label for="email">Email</label>
+    <input id="email" type="email" required>
+    
+     <label for="name">name</label>
+    <input id="name" type="text" required>
+    ...
+    <input type="submit" value="Submit">
+</form>
