@@ -1,0 +1,22 @@
+
+JavaScript - Permutations <br>
+Strings to test for the Longest Word in a String 
+
+<script>
+var testStr = 'hello world superman';
+
+function foo(str) {
+
+  var words = str.split(' ');
+  var biggestWord = 0;
+
+  for (i = 0; i < words.length; i++) {
+    if (words[i].length > biggestWord) { //check all the words are 'true' to see if words are bigger than 0
+      biggestWord = words[i].length;
+    }
+  }
+  return biggestWord;
+}
+
+console.log(foo(testStr));
+</script>
