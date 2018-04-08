@@ -1,0 +1,97 @@
+
+JavaScript - 
+
+
+ES6 .Set() and .Map([]) arrays, and WeakSet() and .WeakMap()
+
+<br><br>
+the Set() works with sets NOT pairs
+<br><br>
+.Map([]) is used for grabbing pairs by the keys in.
+ (notice the double brackets already passed in the .Map([]))
+
+<br><br>
+.WeakSet & .WeakMap() is dealing with objects
+
+<script>
+    //step on call the arrays then pass it in the Set()
+    //the set() works with sets NOT pairs
+    let myArray = [2, 3, 'john', 'bob'];
+    let mySet = new Set(myArray);
+    //do a test in console.log() to make sure you see your arrays are being passed
+
+
+    //step 2 pass the Set() to any function you want
+    mySet.add(99);
+
+    mySet.add({
+        name: "dre",
+        last: "paradise",
+        age: 29
+    }); //adding a object
+
+    //note: notice in the console.log '... ' there trailing dots means there more values to see there just hidden.
+    console.log(mySet);
+
+    mySet.delete(2); //type in the value you want to delete NOT the key!
+    console.log(mySet);
+
+    //if want to see the size .size() right in the console.log
+    console.log(mySet.size);
+
+    //you can loop through very easly ALL of the values sets and return the values with the forEach()
+    mySet.forEach( (val) => { //this line is the same as 'mySet.forEach(function(val){});
+    console.log(val);
+    });
+
+
+    //you can clear out all of the values by .Clear()
+    mySet.clear();
+    console.log(mySet);
+
+    //.Map([]) is used for grabbing pairs by the keys
+    let myMap = new Map([ ['a1', 'rita'], ['a2', 'maria'] ]);
+    console.log(myMap);
+
+    // there is NO .add() when working with .Map([]) use the .set() (small letter 's' .set()) to add more key value pairs
+    myMap.set('a3', 22);
+    console.log(myMap);
+
+    //delete by the key
+    myMap.delete('a2');
+    console.log(myMap);
+
+    //.size()
+    console.log(myMap.size);
+
+    // .forEach() to print out the values
+    myMap.forEach( (val) => { //this line is the same as 'mySet.forEach(function(val){});
+    console.log(val);
+    });
+
+
+    //.WeakSet() and .WeakMap() deals with objects
+    let carWeakSet = new WeakSet();
+
+    let car1 = { make: 'honda', year: 1990 };
+    carWeakSet.add(car1);
+    //console.log(carWeakSet);
+
+    let car2 = { make: 'cadillac', year: 2017 };
+    carWeakSet.add(car2);
+
+    console.log(carWeakSet); //print out 2 object pairs
+
+    carWeakSet.delete(car1); //delete variable that holds the object
+    console.log(carWeakSet); 
+
+    //.WeakMap()
+    //we can add key value to make it .WeakSet() become a .WeakMap()
+
+    let carWeakMap = new WeakMap();
+    let key3 = { id: 3};
+    let car3 = { make: 'bmw', year: 2005 };
+    carWeakMap.set(key3, car3); //no quotes
+    console.log(carWeakMap);
+
+ </script>
