@@ -1,0 +1,50 @@
+
+JavaScript - ES6 class Super();
+
+<script>
+
+    class Car {
+      constructor(color) {
+        this._color = color;
+      }
+      
+      getCarColor() {
+        console.log( `the color of the car is: ${this._color}` );
+      }
+      
+      honda() {
+        console.log(` i drive a Honda the color is: ${this._color} `);
+      }
+      toyota() {
+        console.log(` i drive a Toyota the color is:  `);
+      }
+    }
+    
+    let myHonda = new Car('red');
+    myHonda.getCarColor();
+    myHonda.honda();
+    //console.log(myHonda.honda());
+    
+    /*** extends with super()**/
+    //super() inside of the constructor gives me ALL access the parents Car objects functions and params
+    
+    class Truck extends Car {
+      constructor() {
+        super('black'); // super() overides Parents color red
+      }
+      
+      //create a function that call the parents function that is overridden by the Super()
+      getMeMyCarsColor() {
+       super.getCarColor(); //super() gets the getCarColor() from the parent
+      }
+    }
+    
+    //new object using the super()
+    let myNewTruck = new Truck(); //i already passed the params in my super();
+    myNewTruck.getMeMyCarsColor();
+    
+    let myNewTruck2 = new Truck('yellow'); //i already passed the params in my super();
+    
+</script>
+
+
