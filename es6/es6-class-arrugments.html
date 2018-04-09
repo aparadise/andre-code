@@ -1,0 +1,50 @@
+
+JavaScript - ES6 class passing arguments/parameters 
+
+<script>
+class Family {
+  constructor(name, race) {
+    this._name = name;
+    this._race = race;
+  }
+
+  get name() {
+    return `${this._name}    ${this._race}`;
+  }
+
+  set name(name) {
+    return this._name = name;
+  }
+
+  set name(race) {
+    return this._race = race;
+  }
+
+  static myKids(name) {
+    return new Family(name);
+  }
+
+  getFamName() {
+    console.log(`my family first name: ${this._name} `);
+  }
+
+  getFamRace() {
+    console.log(`my family race 1: ${this._name}  ${this._race}`);
+  }
+
+}
+
+
+let myFam = new Family('joe', 'blow'); //notice this the 2nd param will not run because i didnt put template ${this._race} in the console.log
+myFam.getFamName();
+
+
+let myFam2 = new Family('andre', 'funny person');
+myFam2.getFamRace();
+
+myFam2._name = 'gil';
+console.log(` ${myFam2._name} ${myFam2._race}`);
+
+</script>
+
+
