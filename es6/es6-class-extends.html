@@ -1,0 +1,153 @@
+
+JavaScript - ES6 class extends();
+
+ES 6 Classes: 
+<br><br>
+"basic object"
+<br>
+1. create class with a constructor()
+<br>
+2. create get name() that returns;
+<br>
+3. create set name(); NO return
+<br>
+4. create static name() that returns 
+<br>
+5. create function that returns
+<br><br>
+/***** to extends the object *****/
+<br><br>
+1. extends the class with name
+<br>
+2. create constructor() with a super()
+<br>
+3. get hasName() with a return
+<br>
+4. set hasName() with a return
+<br>
+5. create a function with the same name that returns
+<br>
+<br>
+/*** test true or false with Dynamic params to toggle between functions ***/
+<br><br>
+
+1. create a dynamic function with params for if else
+<br>
+2. create a new class that extends the dynamic function with a constructor() and super()
+
+
+<script>
+    class Animal {
+        constructor(name) {
+            this._name = name;
+        }
+        get name() {
+            //get the orignal paramerters from 'new Animal();'
+            return this._name;
+        }
+        set name(name) {
+            //this resets the orginal name
+            this._name = name;
+        }
+        static myNewAnimal(name) { //static creates a new object
+            return new Animal(name); //i can call new in the class making it preset dynamically for the static() the contructor will do the rest of the work
+        }
+        getInfo() {
+            return `${this.name} is my first name`; //dont 4 get the template string. the function is used to pass the collection of the objects information
+        }
+    };
+
+    //this is how you call the Animal class to create and object
+    //step 1
+    //call pass and arugment to the 'name' pararmeter of the Animal class contructor & get
+    let pig = new Animal('3 little pigs');
+    console.log(`you created the object name: ${pig.name}` );
+
+    pig.name = 'bee';
+    console.log(`You changed the objects game: ${pig.name}` );
+
+    let chipmunk = Animal.myNewAnimal('shark');
+    console.log(`You called the satic object: ${chipmunk.name}` )
+
+    console.log(chipmunk.getInfo()); //check to see if the get() works
+
+    console.log(`---- extends class ---`);
+
+    /******************extends Animal Class ************************/
+
+
+    class AfricanAnimals extends Animal {
+        constructor(name, hasColor) {
+            super(name)
+            this._hasColor = hasColor;
+        }
+        get hasColor() {
+            return this._hasColor;
+        }
+        set hasColor(hasColor) { //this will check true or false if it has a hasColor
+            this._hasColor = hasColor;
+        }
+        //no static functin used in the extends class object
+        getInfo() { //this getInfo() copies over the Animals getInfo()
+        //code here
+            return `${this.name} and is a Jungle Ass Hole!`;
+        }
+    }
+
+    //create object of the new extened class
+    let kanagroo = new AfricanAnimals(`kangaroo`);
+    console.log(kanagroo.name); //check to see if the get() works
+    kanagroo.name = `king kong`;
+    console.log(kanagroo.name); //check to see if the get() works
+
+
+    //test the true/false params
+    //new object
+    let zebra = new AfricanAnimals(`zebra`, true); //the boolean will print first
+    console.log(zebra.name); //check to see if the get() works
+    console.log(`the color is stripes: ${zebra.hasColor} ${zebra.name} `); //boolean runs first
+    console.log(kanagroo.getInfo()); //check to see if the get() works
+
+    /***  how to Dynamically inharit from classes   ***/
+
+    function getClass(classType){
+        if(classType == 1){
+            return Animal;
+        } else {
+            return AfricanAnimals; 
+        }
+    }
+
+    class Koala extends getClass(2) { //what number is passed with print out the function below
+        constructor(name) {
+            super(name);
+        }
+    }
+
+    //test
+    let carl = new Koala(`Carl`);
+    //this get() is printed based on what function above "1 or else" so it chooses getInfo() in between classes
+    console.log(`Dynaamically calling the inharit object: ${carl.getInfo()} `);
+    
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
