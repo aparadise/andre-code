@@ -1,0 +1,50 @@
+
+JavaScript - ES6 class set();
+
+<!--
+ you can Set the value and find the size of the value and loop through 
+ ALL of the set values and delete a value.
+ the values MUST be exact match
+-->
+
+
+<script>
+
+    let randSet = new Set();
+
+    randSet.add(10);
+    randSet.add(`word`);
+    randSet.add(`hello`);
+
+    console.log(` Has 10: ${ randSet.has(10) } `); //true/false if exact match
+    console.log(` Set Size: ${randSet.size}  `); //this gives you a total count of the Set() values that was passed.
+
+    //delete the value of Set() if it exist.
+    randSet.delete(10);
+
+    //loop through all of the Set() values and print them like a for in loop. 
+    //remember I deleted 10 so it will not print.
+    for(let val of randSet)console.log( ` Set Val: ${val}` );
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
