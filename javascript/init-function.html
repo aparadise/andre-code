@@ -1,0 +1,56 @@
+<style>
+.myBorder{
+    border:1px solid red;
+}
+</style>
+
+<script>
+
+var testObj = {
+    init : function(){
+        $('.wrap').on('click', '.addBorder', this.addBorderFunc);
+        $('.wrap').on('click', '.removeBorder', this.removeBorderFunc);
+},
+    addBorderFunc : function(){
+     $('.wrap').addClass('myBorder');
+},
+    
+    removeBorderFunc : function(){
+       $('.wrap').removeClass('myBorder');
+    }
+    
+
+};
+
+testObj.init();
+
+
+/* this code below is the same as above.  its been refactored as object to clean up the javascript
+
+    $('.wrap').on('click', '.addBorder', function(){
+       $('.wrap').addClass('myBorder');
+    });
+    
+    $('.wrap').on('click', '.removeBorder', function(){
+       $('.wrap').removeClass('myBorder');
+    });
+
+*/
+</script>
+
+<div class="wrap">
+    hello world
+    
+    <button class="addBorder">add border</button>
+    <button class="removeBorder">remove</button>
+</div>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,65 @@
+<script>
+
+//-----step 1---
+function Tour(price) {
+  this.cost = function(nights) {
+    console.log(nights * price);
+  };  
+}
+
+$(document).ready(function() { 
+  var tour = new Tour(100);
+  tour.cost(4);
+});
+
+//-------step 2---------
+
+function Tour(el) {
+  this.el = el;
+  this.fetchPhotos = function() { };
+  this.el.on('click', 'button', function(){});
+}
+
+$(document).ready(function() { 
+  var paris = new Tour($('#paris'));
+});
+
+//------------step 3---------
+
+function Tour(el) {
+  var tour = this;
+  this.el = el;
+  this.fetchPhotos = function() { 
+    $.ajax('/photos.html', {
+      context: tour,
+      data: {location: el.data('location')},
+      success: function(response) {
+        this.el.find('.photos').html(response).fadeIn();
+      },
+      error: function() {
+        this.el.find('.photos').html('<li>There was a problem fetching the latest photos. Please try again.</li>');
+      },
+      timeout: 3000,
+      beforeSend: function() {
+        this.el.addClass('is-fetching');
+      },
+      complete: function() {
+        this.el.removeClass('is-fetching');
+      }
+    });
+  };
+  this.el.on('click', 'button', this.fetchPhotos);
+}
+
+$(document).ready(function() { 
+  var paris = new Tour($('#paris'));  
+    var london = new Tour($('#london'));
+});
+</script>
+
+
+
+
+
+
+

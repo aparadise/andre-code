@@ -1,0 +1,58 @@
+
+In javascript for..in works this way:
+
+for (var key in objectOrArray) {
+    console.log(key, objectOrArray[key]);
+}
+
+The block of code inside of the for...in loop will be executed once for each property.
+
+Looping through the properties of an object:
+
+Example
+
+var person = {fname:"John", lname:"Doe", age:25}; 
+
+for (x in person) {
+    txt += person[x];
+}
+
+--notes----
+
+secondly for(x in person) here x is the key hence person[x] will give the value.
+
+now in line txt = txt + person[x] you are just concatenating strings (values and not keys), so  txt will just contain all the values
+
+First, there is no concept of associate arrays in JavaScript, the person is an object and an object is iterated using the for-in loop.
+
+The line:
+
+txt = txt + person[x];
+simply reads each property of the person objects and concatenates the value in the txt variable giving the result:
+
+JohnDoe25
+
+--------notes----------
+
+
+ <button onclick="myFunction()">Try it</button>
+ 
+    <p id="demo"></p>
+
+    <script>
+        function myFunction() {
+            var x;
+            var txt = "";
+            var person = { fname: "John", lname: "Doe", age: 25 }; //this will count each value of the object
+            var myString = "this is a test"; //this will count each letter of the object
+
+            for (x in myString) {
+                txt = txt + x + ':' + myString[x] + '<br/>';  //this will count each value of the object
+            }
+
+            for (x in person) {
+                txt = txt + x + ':' + person[x] + '<br/>';  //this will count each letter of the object
+            }
+            document.getElementById("demo").innerHTML = txt;
+        }
+    </script>

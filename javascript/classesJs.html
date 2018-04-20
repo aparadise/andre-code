@@ -1,0 +1,40 @@
+<script>
+
+//class  function to define a singleton object
+var apple = new function() {
+    this.type = "macintosh";
+    this.color = "red";
+    this.getInfo = function () {
+        return this.color + ' ' + this.type + ' apple';
+    };
+}
+
+
+// or write the class like this in object
+
+// var apple = {
+//    type: "macintosh",
+//    color: "red",
+//    getInfo: function () {
+//        return this.color + ' ' + this.type + ' apple';
+//    }
+//}
+
+ 
+apple.color = "yellow";  //over ride with instance
+// var bb = apple.color = "reddish";  //over ride with instance
+ //var y = apple.color = "blue"; //over ride with instance
+
+//alert(apple.getInfo());
+var x = apple.getInfo();
+$('.theCar').html( x );
+
+//$('.theCar').html( y + " " + bb );
+</script>
+
+
+<div class="theCar">
+    class
+    <!-- http://www.phpied.com/3-ways-to-define-a-javascript-class/ -->
+</div>
+

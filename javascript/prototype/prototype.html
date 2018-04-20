@@ -1,0 +1,46 @@
+<script>
+function Pet(name, species, hello)
+    {
+        this.name = name;
+        this.species = species;
+        this.hello = hello;
+    }
+     
+    Pet.prototype.sayHello = function()
+    {
+        alert(this.hello);
+    }
+     
+    var rufus = new Pet("Rufus", "cat", "miaow");
+    rufus.sayHello();
+    
+    
+//example 2
+function mySports(Football, Basketball, Hockey){//conctructor
+    this.Football = Football; 
+    this.Basketball = Basketball;
+    this.Hockey = Hockey;
+    //this.Print = Print; //method function
+}
+
+mySports.prototype.test1 = function(){
+    document.write(this.Football, this.Basketball, this.Hockey);
+}
+
+var dre = new mySports(" dallas ", "Lakers", " Blackhawks" );
+
+dre.test1();
+
+//example 3
+//passing to empty  object
+var foo = {};
+
+foo.name = 'dre';
+foo.age = 55;
+
+foo.int = function () {
+    alert(this.name + " " + this.age);
+}
+
+foo.int();
+</script>
