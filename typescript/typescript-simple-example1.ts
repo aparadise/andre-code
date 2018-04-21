@@ -1,4 +1,5 @@
 //typescript
+//to complile the '.ts' file on the command line type: tsc FileName
 //declaring  if your calling a string or number, array[], boolen, any, etc its called 'static'
 //example let name: string //this is called "TYPES"
 

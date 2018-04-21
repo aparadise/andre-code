@@ -1,0 +1,3 @@
+* to run '-watch auto compile the command line type: tsc -watch FileName
+
+* you can run a manual compile at command line: tsc FileName
