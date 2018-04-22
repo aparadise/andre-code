@@ -1,11 +1,20 @@
+* https://www.typescriptlang.org/docs/handbook/basic-types.html
+
 * to run '--watch auto compile the command line and a .js file type: tsc --watch FileName
 
 * you can run a manual compile at command line: tsc FileName
+
+* you can install 'live server' for ONLY having the
+ page reload automatically after changes to files can accelerate development 
+ NOT for development (you will need and html file to see it or php file): sudo npm install live server or npm install -g live-server
+once installed type: live-server
 
 * create a tsconfig.json to keep in your root
 (this allows you to turn on/off features for typescript to compile) folder file: tsc --init
 
 * @Compile is the typescript template name.
+
+*using/declaring 'types' in typescript allows us to debug our code before runtime to be better coders.
 
 * typescript makes you define its variables called 'type'. meaning you must declair if its a string, number, boolen. example:
 let car: string;
@@ -52,7 +61,22 @@ car = [5,4]; //this is will be and error because its defined as car must be a 's
 so to give the array a value of type of 'any' you write it as: 
 let car: any[] = ['car', 'bike', 29, 'truck', true]; //now i can pass any anything in the array without being strict.
 
+* typescript objects
+/* this object will give and error because its not defined with a type
+    let vehicle = {
+        brand: "BMW",
+        engineType: 4.6
+    }
+    vehicle.brand = 5.5;
+*/
 
+//the correct way to define the object with a type is this way.
+
+let vehicle:{brand: string, engineType: number} = {
+    brand: "BMW",
+    engineType: 4.6
+}
+vehicle.brand = '5.5';
 
 
 
