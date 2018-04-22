@@ -1,3 +1,59 @@
-* to run '-watch auto compile the command line type: tsc -watch FileName
+* to run '--watch auto compile the command line and a .js file type: tsc --watch FileName
 
 * you can run a manual compile at command line: tsc FileName
+
+* create a tsconfig.json to keep in your root
+(this allows you to turn on/off features for typescript to compile) folder file: tsc --init
+
+* @Compile is the typescript template name.
+
+* typescript makes you define its variables called 'type'. meaning you must declair if its a string, number, boolen. example:
+let car: string;
+let engine: number;
+let isFast: boolen;
+
+car: 'BMW';
+engine: 5.5;
+isFast: true;
+
+you can define a type all on one line. example: 
+let cars: string = 'andre, tony, robert, 29. all dogs fly!';
+
+note: if you don't declair/define a type and you try to resign it typescript will automatically give it a type based on its orginal set value.
+example if you try and over write the prototype property with another type it will give and error.
+let car = {
+    brand: 'BMW',
+    engine: 3.4,
+    run: function() {
+        console.log(" i am driging 100ph");
+    }
+} 
+
+car.brand = 5.5; // you will get typscript error asking for a string because 'brand' is orginal defined as 'string'
+
+
+* type called 'any'. this will allow you to pass a value of anytype without being strict.
+there are two ways to pass any value.
+example: 1.
+let car: any; // now car value can be number, string or array etc.
+car: 4;
+car: 'bmw';
+
+example 2. (if you just call variable without setting it typscript will auto assign it a value of 'any')
+let car; //auto gives it 'any' behind the scenes.
+car: 4;
+car: 'bmw';
+
+*arrays are called by '[]'.
+example: let car: string[] = ['car', 'bike','truck']; //this means that this array must ONLY take strings
+car = ['nissan']; //this is valid because its array thats a string. 
+car = [5,4]; //this is will be and error because its defined as car must be a 'string[]' array.
+
+so to give the array a value of type of 'any' you write it as: 
+let car: any[] = ['car', 'bike', 29, 'truck', true]; //now i can pass any anything in the array without being strict.
+
+
+
+
+
+
