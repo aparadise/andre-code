@@ -31,7 +31,7 @@
     }
     calc4(1, '1');
 
-        //this function below is called in variable for the calc3 function above
+        //this function below is called in a variable for the calc3 function above
         let universal: (value1: number, value2: number)=> number;
         universal = calc3;
         console.log(universal(5,29)); 
