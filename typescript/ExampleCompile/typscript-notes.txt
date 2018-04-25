@@ -79,5 +79,6 @@ let vehicle:{brand: string, engineType: number} = {
 vehicle.brand = '5.5';
 
 
-
+*****namespacing in typescript to import module *****
+you must complie it by typing if type script doesnt automatically create a .js file of the module:  tsc nameOfFile --outFile nameOfFile.js
 
