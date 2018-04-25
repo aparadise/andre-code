@@ -80,5 +80,13 @@ vehicle.brand = '5.5';
 
 
 *****namespacing in typescript to import module *****
-you must complie it by typing if type script doesnt automatically create a .js file of the module:  tsc nameOfFile --outFile nameOfFile.js
+in order to import a module you must type at the top of the nameSpace file: ///<reference path="nameSpaceModule.ts"  />
 
+you must complie it by typing if type script doesnt automatically create a .js file of the module:  tsc nameOfFile.ts --outFile nameOfFile.js
+
+you need to export properties(like variables, constants) and methods(functions) of the namespace so that they are available.
+
+you can use 'import' keyword for namespacing (you after comple each time when you make a change) 
+   import thisSpace = nameSpaceTest.someData;
+    console.log(thisSpace());
+    console.log(thisSpace);

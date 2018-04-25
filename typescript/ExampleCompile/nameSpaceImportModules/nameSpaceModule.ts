@@ -6,4 +6,10 @@ namespace nameSpaceTest {
         //return 'hello world...using export';
         return name;
     }
+
+    
+    export function someData2(value1: string){ // using types to be strict
+        //return 'hello world...using export';
+        return value1;
+    }
  }

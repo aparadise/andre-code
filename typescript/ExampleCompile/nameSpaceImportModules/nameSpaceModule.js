@@ -6,4 +6,9 @@ var nameSpaceTest;
         return nameSpaceTest.name;
     }
     nameSpaceTest.someData = someData;
+    function someData2(value1) {
+        //return 'hello world...using export';
+        return value1;
+    }
+    nameSpaceTest.someData2 = someData2;
 })(nameSpaceTest || (nameSpaceTest = {}));
