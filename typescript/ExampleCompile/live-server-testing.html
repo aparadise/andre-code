@@ -5,11 +5,30 @@
         <style>
  
         </style>
-        <script src="nameSpacing.js"></script>
+        <!--<script src="node_moudles/systemjs/dist/system.js"></script>-->
+        <script src="systemjs-master/dist/system.js"></script>
+       <!-- <script src="app-main/app.js"></script>-->
+
     </head>
     <body>
 
        <div> live server testing page.</div>
+       <p>if you agre geeting a error that says... make sure the system.js is installed and make sure the path is correct to the system.js and app.js</p>
+       <p>you must install system.js to see modules</p>
+       <p>this loading a module form the system.js</p>
+
+       <script>
+           //make sure this is speelled correct: SystemJS
+           SystemJS.config({
+               baseURL:'/',
+               packages: {
+                   '/': {
+                       defaultExtension:'js'
+                   }
+               }
+           });
+           SystemJS.import('app-main/app.js');
+       </script>
       
     </body>
 </html>

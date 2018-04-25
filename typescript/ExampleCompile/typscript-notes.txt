@@ -90,3 +90,7 @@ you can use 'import' keyword for namespacing (you after comple each time when yo
    import thisSpace = nameSpaceTest.someData;
     console.log(thisSpace());
     console.log(thisSpace);
+
+*** npm install systemjs ***
+install systemjs to for app exporting. 
+or look at the docs: https://github.com/systemjs/systemjs   
