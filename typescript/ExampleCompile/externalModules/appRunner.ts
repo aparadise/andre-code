@@ -10,6 +10,8 @@ console.log(myName); //using and aleieas
 
 
 //NOTE: I keep getting this typscript error if you dont have 'systemjs' installed--> 'Uncaught ReferenceError: exports is not defined'
+//if you are getting this error its becasue once you try to 'import' your app file from the modules export YOU MUST run it throught
+// SystemJS
 //import Object2 = Object.someData; //creating alias names to the function
 //console.log(Object2('santa clause'));
 

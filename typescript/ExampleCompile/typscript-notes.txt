@@ -93,4 +93,6 @@ you can use 'import' keyword for namespacing (you after comple each time when yo
 
 *** npm install systemjs ***
 install systemjs to for app exporting. 
-or look at the docs: https://github.com/systemjs/systemjs   
+or look at the docs: https://github.com/systemjs/systemjs
+
+notes to remember: you 'export' module.ts and you 'import' the exported moudle into the app.ts   
