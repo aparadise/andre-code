@@ -1,0 +1,23 @@
+es6 'const' key word variable can not be reassigned once declared but it can be updated by using .push[]
+
+<script>
+const foo = 1;
+console.log(foo);
+
+//example 1
+function go1() {
+  const foo = 2; //global block level allowing foo NOT to be over copy the foo=1
+  console.log(foo);
+}
+go1();
+
+
+//example 2
+function go2() {
+  if(true){
+  const tmp = 33;
+  }
+  console.log(tmp); //you will get error cuz of block scope
+}
+go2();
+</script>
