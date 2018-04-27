@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+    <head>
+        <title>let vs var block scope</title>
+    </head>
+
+<script>
+    //example 1
+function hello1() {
+  var a = 'function1';
+
+  for (var i = 0; i < 10; i++) {
+      var a = 'block1';
+       console.log(a); //this is not in IFFY so the var 'a' will overright a=function1
+   }    
+}
+hello1();
+
+
+//example 2: a work around using IFFY to stop global scope copying over the variable.
+function hello2() {
+  var b = 'function2';
+
+  for (var i = 0; i < 10; i++) {
+    (function() {
+      var b = 'block2';
+       console.log(b); //by putting this function in block level IFFY scope it will not copy over the variable a=function. its treated as it own variable.
+    })();
+  }
+  console.log(b);
+}
+hello2();
+
+//example 3: using ES6 'let' for block scoping by rewriting example 1
+function hello3() {
+  var c ='function3';
+
+  for (var i = 0; i < 10; i++) { //i could also use 'let' to replace 'var' in the for loop
+      let c ='block3'; //notice the 'let'
+       console.log(c);
+      }    
+   
+   console.log(c);   
+}
+
+hello3();
+
+
+</script>
+    <body>
+
+            ES6 'let' block variable vs 'var' 'scope' referes the live cycle of a variable a block is what is between {}. in javascript we have TWO SCOPES.
+            <br> 1. global scope<br> 2. the function scope
+            
+            <pre>
+            example 1:
+            {
+            var a = 'this a global block';
+            }
+            console.log(a);
+            
+            ----------------------------------
+            example 2:
+            
+            function hello(){
+             var a = 'this is function scope NOT global'
+            }
+            hello();
+            console.log(a); //this will give error cuz the a inside of the function. the console.log() needs to be inside of the function for access.
+            
+            
+            </pre>
+            
+
+
+
+    </body>
+</html>
