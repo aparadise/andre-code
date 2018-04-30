@@ -1,6 +1,7 @@
 
 JavaScript - ES6 Arrow Functions
 
+arrows have 'lexical scope'
 
 <button id="myBtn">click</button>
 
@@ -60,6 +61,24 @@ JavaScript - ES6 Arrow Functions
         return a + b;
     }
     console.log(add(5,5));
+
+
+
+ //example 4 
+
+ let person = {
+     name: 'andre',
+     hobbies: ['food', 'movies', 'dog'],
+     sayName: function(){
+
+         this.hobbies.forEach(hobby => {
+             console.log( ` hello ${this.name} likes ${hobby}  ` );
+             
+         });
+     }
+ }
+ person.sayName();
+
 
 
 //do not pass
