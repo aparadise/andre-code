@@ -1,0 +1,185 @@
+angualar5 for the most part you will be working in the  'angular/src/app' folder.
+angualar5 will automatically make a typscript file 'app.component.ts' that looks like this in 3 different sections:
+
+//one (impor from the angualar core libary)
+import {Component} from '@angualar/core';
+
+//two (Component decrator. these are the properties that define  you component.)
+@Component({
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss']
+});
+
+//three (this is the fill where ALL of the logi stays)
+export class AppComponent {
+    title = 'app';
+}
+
+note: to run angualar server run at the command line type: ng serve
+note: to generate a new component on the command line type: ng generate component newFileName
+ or
+note: to generate a new component the short hand way by typing: ng g c newFileName
+(after you type this command you will see what files are created and if there are any updates)
+-----------------------------------------
+
+
+//make sure to use back tics on style object
+@Component({
+    selector: 'joke-form',
+    templateUrl: 'fileName.html',
+    style: [
+        `
+            .foo {
+                background-color: red;
+            },
+            .boo {
+                color: green;
+            }        
+        `
+    ]
+});
+
+//notice template needs back tics
+@Component({
+    selector: 'joke',
+    template:
+     `
+        <div class="foo"><span class="boo">hello world</span></div>
+    `
+});
+
+------notes ngRoutes for Angular 4-----
+view incapulatons=
+
+ngRoute = navigate to different pages in your application, 
+but you also want the application to be a SPA (Single Page Application), with no page reloading.
+
+example of ngRoute code;
+<body ng-app="myApp">
+
+<p><a href="#/!">Main</a></p>
+
+<a href="#!red">Red</a>
+<a href="#!green">Green</a>
+<a href="#!blue">Blue</a>
+
+<div ng-view></div>
+
+<script>
+var app = angular.module("myApp", ["ngRoute"]);
+app.config(function($routeProvider) {
+    $routeProvider
+    .when("/", {
+        templateUrl : "main.htm"
+    })
+    .when("/red", {
+        templateUrl : "red.htm"
+    })
+    .when("/green", {
+        templateUrl : "green.htm"
+    })
+    .when("/blue", {
+        templateUrl : "blue.htm"
+    });
+});
+</script>
+
+<p>Click on the links to navigate to "red.htm", "green.htm", "blue.htm", or back to "main.htm"</p>
+</body>
+
+----angular 5 notes routing-------
+import{NgModule} from '@angular/core';
+import {Routes,  RouterModule} from 'angular/router';
+import{HomeComponent} from './home/fileNameHome.Component';
+import{AboutComponent} from './about/fileNameAbout.Component';
+
+const routes = Routes = [
+    {
+        path:'',
+        Component: HomeComponent
+    },
+    {
+        path:'about/:id', //once you add '/:id' its called a route parameter. you can add more than one '/:id/:whatever' you will pass in the route paramter in the class
+        Component: AboutComponent
+    },
+];
+
+@NgModule({
+    import: [RouterModule.forRoot(routes)];
+    export: [RouterModule]
+});
+
+export class ApplicationMoudle{}
+
+//add this import for passing routher paramters
+import{ActivateRoute} from '@angular/router';
+
+export class AboutComponent implements OnInit{
+
+    //pass depenency in injuection inside of the constructor to pass the route paramters.
+// you will also need pass properties types and maybe query item for database
+
+    constructor(private route: ActivateRoute){
+     this.route.params.subscribe( res=>console.log(res.id)); //pass the route 'id'   
+    }
+        ngOnIt(){
+
+        }
+    
+}
+
+****anguala5 notes**
+you can use 'template' to write full html code or just use 'templateUrl' to point to the file itself. 
+you can use 'style' to write css code (use back tics) as object or just use 'styleUrls' to point to the css file itself. 
+
+string interpulatins is = "{{someVariable}}"
+someVariable: string 'Submit';
+someVariable2: string 'Hello world';
+
+(this is alled one way data binding)
+<input type"submit" value="{{someVariable}}"> //now this is called property binding once interpulatins is used
+<input type"submit" [value]="someVariable"> //now  you write it this way for property binding once interpulatins and wrap the property in [] and delete the {{}}
+
+for two way data binding you need to use the NgModule. YOU WILL need to import the forms module.
+<input type"text" placeholder=[(ngModel)]="someVariable2"> //this is how you set up two data binding
+<p>{{someVariable2}}</p> //if you add this combine with from input when you type it will add what you type.
+
+import{FormsModule} from '@angular/forms';
+then you add it to the  imports array below.
+
+@NgModule({
+    declaration:[AppComponent, HomeComponent, AboutComponent],
+    import:[BrowserModule, AppRoutingModule, FormsModule],
+    providers:[],
+    bootstrap:[AppComponent]
+});
+export class AppModule {}
+
+****** angualar 5 event binding *****
+<input type"submit" [value]="someVariable" (click)=>"addSomeFunction()">
+when using binding use the build in function in your class called: ngOnIt() {}
+
+
+export class HomeComponent implements OnInit{
+    itemCount: number;
+    goals = [];
+
+    constructor(){
+   
+    }
+        ngOnIt(){
+            this.itemCount = this.goal.length;
+        }
+
+    addSomeFunction() {
+        this.goals.push(this.goalText);
+        this.goalText = '';
+        this.itemCount = this.goals.length;
+    }   
+}
+
+<!--i use *ngFor to tell the angualr to fetch and to keep looping he update with variable let name goal with the value goals -->
+<p *ngFor="let goal of goals">
+{{goals}}
+</p>

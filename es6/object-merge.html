@@ -1,0 +1,13 @@
+
+  ES6 Object Merge
+
+<script>
+    //3 objects
+    var dest = {a:0};
+    var src1={b:1, c:2};
+    var src2={d:3, e:4};
+
+    const mergedObjects = Object.assign(dest, src1, src2);
+    console.log(mergedObjects);  //outputs: {a: 0, b: 1, c: 2, d: 3, e: 4}
+
+</script>

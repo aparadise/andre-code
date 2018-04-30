@@ -1,0 +1,11 @@
+<script>
+    var str = "Hello world! ";
+    str.repeat(2);
+    str.repeat(-1);   // RangeError
+    str.repeat(0);    // ''
+    str.repeat(1);    // str
+    str.repeat(2);    // 'abcabc'
+    str.repeat(3.5);  // 'abcabcabc' (count will be converted to integer)
+    str.repeat(1/0);  // RangeError
+    console.log(str); //prints: Hello world! Hello world! 
+</script>
