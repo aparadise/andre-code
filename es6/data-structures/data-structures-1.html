@@ -1,0 +1,45 @@
+<!Doctype html>
+<html>
+    <head>
+        <title>data structures</title>
+<script>
+// The match() method searches a string for a match against a regular expression, and returns the matches, as an Array object.
+// If the regular expression does not include the g modifier
+// (to perform a global search), the match() method will return only the first match in the string.
+// This method returns null if no match is found.
+
+function myFunction() {
+    var str = "{{}}}"; 
+    var res = str.match(/{/g); //using a regualar expresion witht the 'g'. 
+    var res2 = str.match(/}/g);
+    // console.log(res.length)
+    document.getElementById("demo").innerHTML = res;
+    document.getElementById("finalBalanceCount1").innerHTML = res.length + '{';
+    document.getElementById("finalBalanceCount2").innerHTML = res2.length + '}';
+
+    if(res.length === res2.length){
+        alert('true');
+        document.getElementById("finalBalanceCountTotal").innerHTML = 'true -- the charchters balance';
+    }else{
+        alert('false');
+    document.getElementById("finalBalanceCountTotal").innerHTML = 'false -- the charchters DO NOT balance';
+    }
+ }
+
+myFunction();
+</script>
+
+    </head>
+<body>
+
+Simple data structure finding if the 'string charchters' or balanced with even count.
+        <p id="demo"></p>
+
+        Balance Count:
+        <p id="finalBalanceCount1"></p>
+        <p id="finalBalanceCount2"></p>
+        
+        final balance is true or false
+        <p id="finalBalanceCountTotal"></p>
+</body>
+</html>

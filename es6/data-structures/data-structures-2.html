@@ -1,0 +1,28 @@
+<!Doctype html>
+<html>
+    <head>
+        <title>data structures</title>
+<script>
+//using regular expressions
+
+function startsWith(array, key) {
+  const matcher = new RegExp(`^${key}`, 'g');
+  return array.filter(word => word.match(matcher));
+}
+
+const words = ['apple','ape','open','soap','{','{}}','}','}','}']
+
+//const key = '}'
+const key ="ap"
+const result = startsWith(words, key)
+
+console.log(result);
+</script>
+
+    </head>
+<body>
+
+Simple data structure finding if the 'string charchters' or balanced with even count or set of matching string elements.
+    
+</body>
+</html>
