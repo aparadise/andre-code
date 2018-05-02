@@ -1,0 +1,30 @@
+
+Example ES6 Map vs Set: 
+<script>
+
+/*set*/
+/*
+let myArr = [4,5,6,7];
+let mySet = new Set(myArr);
+
+mySet.add('100'); // added a string
+mySet.add(55); // added a number
+mySet.add({a:1, b:2}); //added and object
+
+console.log(mySet.size);
+//mySet.delete(5); //this will delete the value
+
+//you can loop through the set to get out each single value
+mySet.forEach(function(val){
+ console.log(val);
+});
+ */
+
+/* working with maps vs set */
+
+let myMap = new Map( [ ['a1', 'hello world'], ['b2', 'kansas'], ['c3', 'texas']  ] );
+myMap.set('d4','cali');
+//myMap.delete('a1'); // you must delete the key and that will delete the both key and value
+console.log(myMap);
+console.log(myMap.size);
+</script>

@@ -1,0 +1,64 @@
+
+Example ES6: Map, Set, WeakMap and WeakSet: 
+<script>
+
+/*set*/
+/*
+let myArr = [4,5,6,7];
+let mySet = new Set(myArr);
+
+mySet.add('100'); // added a string
+mySet.add(55); // added a number
+mySet.add({a:1, b:2}); //added and object
+
+console.log(mySet.size);
+//mySet.delete(5); //this will delete the value
+
+//you can loop through the set to get out each single value
+mySet.forEach(function(val){
+ console.log(val);
+});
+ */
+
+/* working with maps vs set */
+
+/*
+let myMap = new Map( [ ['a1', 'hello world'], ['b2', 'kansas'], ['c3', 'texas']  ] );
+myMap.set('d4','cali');
+//myMap.delete('a1'); // you must delete the key and that will delete the both key and value
+console.log(myMap);
+console.log(myMap.size);
+*/
+
+/* WeakSet */
+/*the same .add, .delete, .size are still used*/
+let carWeakSet = new WeakSet(); //make sure its CAPITAL WeakSet
+
+let car1 = {
+    make: 'Honda',
+    modle: 'civic'
+}
+
+carWeakSet.add(car1); //we use .add() for WeakSet()
+console.log(carWeakSet);
+
+/* WeakMap */
+let carWeakMap = new WeakMap(); //make sure its CAPITAL WeakMap
+
+let key = {
+    id: 1
+}
+let car3 = {
+    make: 'kia',
+    modle: 'stinger'
+}
+carWeakMap.set(key, car3); //we use .set() for WeakMap
+//carWeakMap.delete(car2);
+console.log(carWeakMap);
+
+
+
+
+
+
+</script>
