@@ -16,8 +16,9 @@ Example ES6:
 var theMap = new Map();
 theMap.has('andre'); //returns 'false' because i have not put ANYTHING in the map yet
 theMap.entries(); //this returns ALL of the keys in the map.
-let keyObj ={};
-let keyFunc = function(){};
+
+let keyObj ={};   //using variables to show you add to the map
+let keyFunc = function(){};  //using variables to show you add to the map
 
 theMap.set(keyObj,'i am empty object'); //enter key and value
 theMap.set(keyFunc,'i am just a function(){}'); //enter key and value
