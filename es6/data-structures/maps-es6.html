@@ -1,0 +1,31 @@
+maps are data structures that store key value pairs.
+javascritpt in arrays are objects that are maps that store key value pairs.
+
+
+objects are simular to maps. they let you set keys to values, retrieve keys, delete keys, and tells you if you have something stored in a key.
+
+the difference between objects and ES6 maps are: and object has a protoype so there are defualt keys in a map that can collide with
+your keys in a map if your not careful. The keys of and object CAN ONLY BE keys are symbols. But keys to a map CAN BE ANYTHING... string, numbers, boolean or functions.
+
+You can get the size of a map with the size property.
+
+So you want to use a mpap if  you have a collection.
+
+Example ES6: 
+<script>
+var theMap = new Map();
+theMap.has('andre'); //returns 'false' because i have not put ANYTHING in the map yet
+theMap.entries(); //this returns ALL of the keys in the map.
+let keyObj ={};
+let keyFunc = function(){};
+
+theMap.set(keyObj,'i am empty object'); //enter key and value
+theMap.set(keyFunc,'i am just a function(){}'); //enter key and value
+theMap.set('hello','world'); //enter key and value
+theMap.set('hello2','world2'); //enter key and value
+theMap.set('hello3','world3'); //enter key and value
+
+console.log(theMap.size); // returns full count of the ALL of the keys/values
+console.log(theMap.get('hello2')); //enter the key and it returns the value
+
+</script>
