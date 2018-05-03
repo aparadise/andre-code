@@ -1,0 +1,32 @@
+indexOf vs lastIndexOf
+
+indexOf = returns the FIRST finding search of the word.
+lastIndexOf = finds the LAST word of the search.
+if none of them find the searched word it returns -1
+If it finds the word it gives you number telling where to finding it starting at 0.
+
+<script>
+
+    //example of indexOf()
+    //if the word is not there it returns -1
+    var a = 'hello world andre!';
+    var ab = a.indexOf('world'); //case sensitive on key word search. indexOf finds the first word
+    console.log(ab); //6
+
+
+    // example of indexOf used to replace '.length' in a for loop.
+    var x = [1,2,3,4,5,6,7];
+    var x1 = x.indexOf(5);
+    if( x1 > -1){
+        console.log('yes there is a number')
+    }else{
+        console.log('no number found -1');
+    }
+
+
+    // example of lastIndexOf
+    var c = 'hello world andre! world.';
+    var cc = cc.lastIndexOf('world'); //lastIndexOf finds the last word
+    console.log(cc); //19
+
+</script>
