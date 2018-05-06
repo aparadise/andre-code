@@ -1,4 +1,6 @@
-About this Angular 5 "To Do List" app: 
+About this Angular 5 "To Do List" app:
+ 
+myAngular5-app/testAppNg5/src/app
 
 
 name: To Do List.
