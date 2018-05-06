@@ -1,0 +1,15 @@
+<p>
+  about works!
+</p>
+
+<p>
+ Click here <a href="#" (click)="sendMeHome()"><u>Back to Home</u></a>
+</p>
+
+<!--now below is being pulled in from services data-->
+<!--copy this to all pages that you need to share for services and update there files as well.-->
+<ul>
+  <li *ngFor='let goal of goals'>
+    {{goal}}
+  </li>
+</ul>

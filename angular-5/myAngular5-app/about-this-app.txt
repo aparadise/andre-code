@@ -1,0 +1,197 @@
+About this Angular 5 "To Do List" app: 
+
+
+name: To Do List.
+code: Angular 5.0
+typescript: 2.5.3
+wepack: 3.11.0
+written by: Andre' J
+warrning: This app is not compressed with the 'ng build --prod' and the notes are just quick notes
+for you to glance at and do your own research for in depth on Angular 5.0.
+
+
+
+Notes:
+* npm new FolderName does not work try and get error saying: ' cannot use the new command inside an angular-cli project.'
+and if yor using Windows, you should delete the package.json, package-lock.json files in your directory or root directory or just rename it (the files will come back on the build). 
+Then try and run 'ng new' command again. (this worked for me).
+
+
+*install scss (css is already by default when making a new angular directory.) and --routing to have it already setup. type:
+ng new FileName --style=scss --routing
+
+
+* type: 'ng serve' to start the angular server. (look for localhost server path it should say 4200) then open your browser to see the angular logo.
+  (note: YOU MUST... be in the EXACT directory folder of the that man root app is located to and run 
+  ng serve' if you have more than one Angular 5.0 application in the main folder if you want to run a certin app. )
+
+* once installed you will see the src/app/app.component.ts
+in your app.component.ts you will see 3 following component areas.
+
+//1. imports your components. by default it loads just one "Component" 
+import { Component } from '@angular/core'; 
+
+//2. where your html template and css/scss files are defined
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
+})
+
+//3. the final exported file name that loads EVERYTHING that calls your logic.
+export class AppComponent {
+  title = 'app';
+}
+
+* to make a NEW Angular component you need to run the angular cli. 
+  type: ng generate component HomeFileName
+  or you can use the shothand
+  ng g c HomeFileName
+  (notice on the build it creates your HomeFileName directory along with the same files (except for the 'app-routing.modules.ts')that are in the src/app)
+  (not your 'app.modules.ts' will be updated with the file path) (everytime you make a new component file it updates the app.modules.ts)
+
+*****************************************************
+
+*basic Angular built in: routerLink,
+
+*nesting a component or include file (example):  <app-pageName></app-pageName>
+
+*  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
+  or we can write in back ticks in the template and style as:
+    template: `
+    <div class="foo">hello</div>
+    `,
+  style: [
+      `
+      .foo{
+          color:red;
+      }
+      div{
+          border: 1px solid green;
+      }
+      `
+  ]
+
+
+*****Interpolation, event binding (click)="functionName()", property binding, one-way data binding []='', two-way data binding [()]='', ngModue, *ngFor ********
+* Interpolation == {{}}
+* property binding ==  value="{{btnTxt}}" or [value]="btnTxt"  //also known as 'one-way data binding'
+* one-way data binding is code going from component to the template. (the code just loads in the {{}} onload)
+* two-way data binding. This is when you click or type to make the data show dynamically from the html to the template and back to the html. 
+  (you must import the 'forms module' libary in 'app.module.ts'... import { FormsModule } from '@angular/forms'; ) then you need to add
+  it to the  imports: [
+                        BrowserModule,
+                        AppRoutingModule,
+                        FormsModule
+                    ]
+  [(ngModel)]="propertName" //this goes in the html page in the form. <input type="text" class="txt" name="item" placeholder="life goals..."  [(ngModel)]="propertName" >
+
+* event binding: (click)="addItem()"; //you dont need to pass arrguments to this function because it pulls the data into the {{}}
+
+* to loop/iterate type *ngFor: <p class="life-container" *ngFor="let goal of goals">{{goal}}</p>
+
+****typescript/types****
+  itemCount: number = 4;
+  itemName: string = 'dog';
+
+
+
+***Angular Animation Libary***
+install: npm install @angular/animation@latest --save
+
+in the app.module.ts
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+( then update the imports:[BrowserAnimationsModule] )
+
+then in dirName.components.ts add the following:
+
+import { trigger, style, transition, animate, keyframes, query, stagger  } from '@angular/animations';
+then update the array:  animations:[];
+
+******Routing*****
+This is where make your include files find the correct path of when clicking on a link.
+But you must have routing installed. So its best to install routing everytime you set up new project using the '--routing' (look at above notes)
+Open up the app-routing.module.ts.
+update this file with the by importing the path to the files and updating the array to find the see the files that are imported.
+
+import { HomeComponent } from './home/home.component'; //add this rout for home page
+import { AboutComponent } from './about/about.component'; //add this rout for about page
+const routes: Routes = [
+  {
+    path:'', //this is the main home director so leave this blank
+    component: HomeComponen
+  },
+  {
+    path:'about', //this is the link that will mirror the route to the about page. <a routerLink="about">About</a>
+    component: AboutComponent
+  },
+];
+
+******Creating Route Parameters *****
+READ VERY CAREFULLY!
+
+const routes: Routes = [
+  {
+    path:'', //this is the main home director so leave this blank
+    component: HomeComponent
+  },
+  {
+    path:'about/:id',  //this is the link that will mirror the route to the about page. <a routerLink="about">About</a>. Now to add parameters use '/:id/ or multpile paradmeters ':id/whatever' and update the link <a routerLink="about/29">About</a>.
+    component: AboutComponent
+  },
+];
+
+now to track the paradmeters update the contructor function in the about component or the directory your tracking.
+and you see you how to capture the id paradmeters in the console.log().
+
+In the dirName.component.ts add the following so you can track the routing paradmeters: 
+
+import { ActivatedRoute } from '@angular/router'; //added this and add instance below in the contructor
+import { Router } from '@angular/router'; //added this and add instance below in the contructor
+
+Then once you import the router libary you must create and instance of the ActivatedRoute by dependecy injection. Example:
+
+export class AboutComponent implements OnInit {
+
+  //normally you will create property and bind it the res value for api for a database (res => property dataabase binded value )
+  constructor( private route: ActivatedRoute, private router: Router  ) {
+    this.route.params.subscribe( res => console.log(res.id) ); //notice the name 'route' matches the private
+   }
+
+  ngOnInit() {
+  }
+
+  //you need once you add the 'Router' libary call a new method to the class using this to route to the URL: this.router.navigate(['']);
+  sendMeHome(){
+    //notice the name 'router' matches the private
+    this.router.navigate(['']); //this is empty pointing the home empty path in the router
+  }
+}
+
+*********ng generate service data (IMPORTANT)*****
+To share code data or making http request calls in between components for example between the 'home' page and the 'about' page.
+you need to install 'service data' type: ng generate service data
+
+once this is installed you will a 2 files created: 'data.service.spec.ts' and 'data.service.ts'
+in this 'To Do List' app i am using 'service data' to share my 'goals array' with my home and about page.
+
+The goal of using a service file for services is to share properties and methods in all of the other director files.
+
+key things to import:
+* 'data.service.ts' page import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+   and update the class methods.
+* 'home.component.ts' page import { DataService } from '../data.service'; //i added (note i put two trailing '..')
+   then update on the page update: ngOnInit(), addItem(),  removeItem()
+* 'app.module.ts' page import { DataService } from './data.service'; //i added
+* 'app.module.ts' page update by passing in the providers array:   providers: [DataService]
+* update all pages that have constructor to have the service data:   constructor(private _data:DataService) { }
+
+***to build the file to compress it for your live server from local run: ng build --prod ***
+* to compress the files for final build distrubtion type: ng build --prod
+   (you will see a 'dis' folder made. open that folder and you will see the files you want to upload to the proudction server. the files will be compressed)
+* SPECIAL NOTE: if you are uploading your final build files to a sub folder then you need to run a special command.
+   type: ng build --prod --base-href="yourURL/PathToFolder"
+
+*You can also deploy your app though gitHubPages. type: npm install -g angular-cli-ghpages
+(from here you will need to google or look up how upload to your gitHub account)
