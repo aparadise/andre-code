@@ -1,0 +1,21 @@
+Tripple Add Function aka "curry function"
+
+<script>
+    const tripplAdd = (a)=> {
+        return (b)=> {
+            return (c)=> {
+                return a + b + c;
+            }
+        }
+    }
+
+    console.log( tripplAdd(5)(5)(5) );
+
+    //Above code is the same written like this below:
+
+    const tripplAdd = (a, b, c )=> {
+        return a + b + c;
+    }
+
+    console.log(tripplAdd(1,1,1)  );
+</script>

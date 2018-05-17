@@ -1,0 +1,22 @@
+Tripple Add Function aka "curry function" which means one function
+that takes more than one nested function that each function takes one or more arguments.
+
+<script>
+    const tripplAdd = (a)=> {
+        return (b)=> {
+            return (c, d)=> {
+                return a + b + c + d;
+            }
+        }
+    }
+
+    console.log( tripplAdd(5)(5)(5, 1) );
+
+    //Above code is the same written like this below:
+
+    const tripplAdd = (a, b, c, d )=> {
+        return a + b + c + d;
+    }
+
+    console.log(tripplAdd(1,1,1, 2)  );
+</script>
