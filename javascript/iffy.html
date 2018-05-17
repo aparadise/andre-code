@@ -1,0 +1,68 @@
+IFFY = the reason to use IFFY is to reserve a private scope self invoking without over riding other global variables.
+
+<script>
+    (addMe = (a) => {
+        return a + 10;
+    })(5);
+
+//or
+    (function addThis(x){
+        return x + 5;
+    })(5);
+
+ //or
+
+ (function(){
+    //write another function
+
+    //write variables 
+
+    //operations
+
+ })();
+
+ //or ... advanced way of using an IFFY
+
+
+ function createButtons() {
+   for (var i = 1; i <= 5; i++) {
+     var body = document.getElementsByTagName("BODY")[0]; //make sure you have 'body' tag
+     var button = document.createElement("BUTTON");
+     button.innerHTML = 'Button ' + i;
+     //i have to use and IFFY so that I can pass global 'i' loop inside the function
+     //if not var 'i' will be stuck on value of 6 instead of incrementing. 
+     //SPECIAL NOTE: if i use ES6 'let' for block scope instead of 'var' I would not need to use and IFFY
+     (function(num){    
+         button.onclick = function() {
+          alert('This is button ' + num);
+         }
+     })(i);
+ 
+     body.appendChild(button);
+   }
+}
+ 
+createButtons();
+
+
+//or another way of using a buttons in a loop
+
+ function createButtons2() {
+   for (let x = 1; x <= 5; x++) {
+     var body = document.getElementsByTagName("body")[0]; //make sure you have 'body' tag
+     var button2 = document.createElement("BUTTON");
+     button2.innerHTML = 'Button2... ' + x;
+     addClickFunc(button2, x); //notice i bring up the function and pass in the arrguments.
+ 
+     body.appendChild(button2);
+   }
+}
+ 
+createButtons2();
+
+function addClickFunc(button2, num2){
+    button2.onclick = function(){
+        alert('This is button2... ' + num2);
+    }
+}
+</script>
