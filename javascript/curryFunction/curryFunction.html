@@ -1,0 +1,38 @@
+Curry Function Example:
+
+<script>
+
+//this is a regular function
+function addThis(num1, num2){
+   return console.log(num1 + num2);
+}
+addThis(5, 5);
+
+
+//this is written as curry function
+function addThisCurry(num1){
+   return function(num2){
+     return console.log( num1 + num2);
+   }
+}
+addThisCurry(5)(10);
+
+//ES6 curry function
+const addThis2 = x => y => console.log(x + y);
+addThis2(5)(25);
+
+
+//more practical example
+function getTravelDis(distance){
+  return function(speed){
+    return console.log( distance/speed  );
+  }
+}
+//getTravelDis(600)(80); so instead of printing the answer like this do the following:
+const traveTimeLAtoPortland = getTravelDis(600); //NOW the distance is ALWAYS set and all we have to do is update the speed.
+const traveTimeLAtoSF = getTravelDis(300); //NOW the distance is ALWAYS set and all we have to do is update the speed.
+console.log(traveTimeLAtoPortland(80)); // NOW easily update the speed
+console.log(traveTimeLAtoSF(70)); // NOW easily update the speed
+
+
+</script>

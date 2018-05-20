@@ -1,5 +1,7 @@
 Three types of Objects you can make.
 
+* remember Objects are passed by reference NOT value unless you JSON.stringify() the object to a string value.
+* remember two Objects are NEVER the same in JavaScript.
 <script>
 // object literal syntax
 const myBoat = {
@@ -39,4 +41,26 @@ const jimsCar = new Car('red', 'tesla', 2014);
  
 console.log(carlysCar.getColor());
 console.log(jimsCar.getColor());
+
+
+
+//something to know...
+const user1 = {
+  name: 'Jordan',
+  age: 28,
+};
+ 
+const user2 = {
+  name: 'Jordan',
+  age: 28,
+};
+ 
+console.log(user1 == user2); //return false because objects DO NOT compare in value only reference
+console.log(user1 === user2); //return false because objects DO NOT compare in value only reference
+//now to make this true you must delete user2 and  write your reference as: const user2 = user1;
+
+//the other way to get a value and not reference is to use JSON.stringify() to convert the object to a string then it can be compared by value
+//because strings are primative data types and do not contain properties.
+// console.log(JSON.stringify(user1) === JSON.stringify(user2);
+
 </script>

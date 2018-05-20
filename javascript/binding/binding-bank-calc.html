@@ -1,0 +1,28 @@
+JavaScript Binding
+
+
+
+<script>
+    const account1 = {
+    name: 'bob',
+    totalAmount: 5000,
+    deductAmount: function(amount) {
+        this.totalAmount -= amount;
+        return 'Amount in account: ' + this.totalAmount;
+    },
+    };
+    
+    const account2 = {
+    name: 'andre',
+    totalAmount: 8000,
+    };
+    
+    const withdrawFromAccount = function(amount) {
+    //.bind() binds the first argument 'account2' object to ALL of the propeties & methods to 'account1'. NOW the 'amount' is just arguments for passing the number to the console.log. 
+    //there for becoming a prototype
+    return account1.deductAmount.bind(account2, amount);
+    };
+    
+    console.log(withdrawFromAccount(500)()); //7500
+    console.log(withdrawFromAccount(200)()); //7300
+</script>

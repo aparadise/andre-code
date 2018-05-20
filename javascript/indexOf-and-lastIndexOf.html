@@ -29,4 +29,26 @@ If it finds the word it gives you number telling where to finding it starting at
     var cc = cc.lastIndexOf('world'); //lastIndexOf finds the last word
     console.log(cc); //19
 
+
+    //REMEMBER two Objects are NEVER the same in JavaScript.
+console.log([10, 20, 30, 40, 50].indexOf(30)); //2
+console.log([{ name: 'Pam' }, { name: 'Kent' }].indexOf({ name: 'Kent' })); //-1 because Objects are never the same. they are passed by REference NOT Value.
+console.log('hello world'.indexOf('o')); //4
+console.log([[1], [2], [3], [4]].indexOf([2])); //-1  because two different arrays are NEVER the same in javascript. they are passed by REference NOT Value.
+
+// a trick question example to understand that ONLY propeties & keys can be STRINGS
+//this will force the a[b] to be override by a[c] to the string ['object object]' then hoising over the a value to be 400  
+const a = {};
+const b = { name: 'b' };
+const c = { name: 'c' };
+ 
+a[b] = 200;
+// a['[object Object]'] = 200
+ 
+a[c] = 400;
+// a['[object Object]'] = 400
+ 
+console.log(a[b]);
+// console.log(a['[object Object]']);
+
 </script>

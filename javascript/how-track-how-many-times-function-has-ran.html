@@ -1,0 +1,37 @@
+How to keep track of how many times a function was called with a counter.
+
+<script>
+    function myFunc(){
+        let count = 0;
+        
+        return function(){ //use a closure
+        //in reality you would probally use if/else statement to stop some computation/functionality after a set amount of times ran.
+         /*
+            example:
+            if(count < 4){
+                DO SOMETHING
+            }else{
+                //DO SOMETHING ELSE
+            }
+
+         */       
+
+            count++;
+            return count;
+        }
+    }
+
+    console.log(myFunc()); // now this will only return the function
+    //to keep track of the count you must make an instance of the function. (very simple)
+
+    const instanceOne = myFunc();
+    const instanceTwo = myFunc();
+
+    console.log('instanceOne: ', instanceOne());
+    console.log('instanceOne: ', instanceOne());
+    console.log('instanceTwo: ', instanceTwo());
+    console.log('instanceOne: ', instanceOne());
+    console.log('instanceOne: ', instanceOne());
+    console.log('instanceTwo: ', instanceTwo());
+    console.log('instanceTwo: ', instanceTwo());
+</script>
