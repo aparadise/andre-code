@@ -1,0 +1,28 @@
+javascript passes data by 'reference' vs 'value'
+passing data by value = is primative data type such as 'number' or 'string' without properties are being passed.
+(means you are always updating the variable with the value of the data)
+
+passing data by reference =  is passing array or object
+
+
+<script>
+const list1 = [1, 2, 3, 4, 5];
+const list2 = list1; 
+list1.push(6, 7, 8); //this is value of numbers of primative data type.
+
+console.log(list2); // 1, 2, 3, 4, 5, 6, 7, 8 (because the data is getting updated by value)
+
+
+/* if you didnt want 'list2' to value to be updated by the 'list1.push' you can keep the 
+orginal value of 'list1' in 'list2' by using the '.slice()' or '.concat([])' this will preserve the orignal value.
+
+example: 
+
+const list2 = list1.slice();
+// const list2 = list1.concat([]);
+console.log('List 1: ', list1);
+console.log('List 2: ', list2);
+
+*/
+
+</script>

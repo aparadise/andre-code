@@ -1,0 +1,11 @@
+<script>
+    ‘use strict’; //if you use strict it will help with the error to stop the 'y' variable from being hoisted up to the global scope
+    //if you do not use strict the results would be log y=200 and x would get error.
+ 
+    (function() {
+         var x = y = 200;
+    })();
+         
+    console.log('y: ', y);
+    console.log('x: ', x);
+</script>

@@ -1,0 +1,28 @@
+
+Jquery to make the function keep firing after its been loaded YOU MUST add the hook between the 'click' and function.
+
+Call and Apply is used the EXACT same way. the only difference is 
+apply() take arrays for the arguments after the binded function has been declared.
+
+<script>
+
+const car1 = {
+  brand: 'Porsche',
+  getCarDescription: function(cost, year, color) {
+    console.log(`This car is a ${this.brand}. The price is $${cost}. The year is ${year}. The color is ${color}.\n`);
+  }
+};
+ 
+const car2 = {
+  brand: 'Lamborghini'
+};
+ 
+const car3 = {
+  brand: 'Ford'
+};
+ 
+car1.getCarDescription(80000, 2010, 'blue'); //basic method to call the arguments
+car1.getCarDescription.call(car2, 200000, 2013, 'yellow'); //call() to first bind car2 to car1 as a shared property THEN call the arguments.
+car1.getCarDescription.apply(car3, [35000, 2012, 'black']); //apply() to first bind car3 to car1 as a shared property THEN call the arguments inside of the array[].
+
+</script>

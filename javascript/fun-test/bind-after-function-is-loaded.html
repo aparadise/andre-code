@@ -1,0 +1,18 @@
+
+Jquery to make the function keep firing after its been loaded YOU MUST add the hook between the 'click' and function.
+
+New content added after your code hooking up the event runs WiLL NOT
+ re-run. So you need add the hook. 
+You can use delegated handling instead telling the click to listen/look for exactly where the event is in this example
+'a.delete' :
+
+
+<script>
+
+    $(document).ready(function(){
+        $('#parent').on('click', 'a.delete', function(){
+            //code
+        }):
+    });
+
+</script>
