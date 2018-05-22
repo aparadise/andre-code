@@ -1,0 +1,16 @@
+Strings and Arrays
+
+<script>
+const data1 = 'Jordan Smith';
+ 
+ const data2 = [].filter.call(data1, function(elem, index) {
+   return index > 6;
+ });
+  
+  // writing the '[]' is a short cut for writing the word Array. 
+ // only use 'read-only' methods: filter, forEach, map, some, every, etc.
+ // cannot use: push, pop, splice, shift, reverse, etc. because this will manipulate/change the data.
+  
+ console.log(data2);
+
+</script>

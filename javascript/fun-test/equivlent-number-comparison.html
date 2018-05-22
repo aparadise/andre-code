@@ -1,0 +1,17 @@
+Equivalent Numbers
+javaScript does not do well with binary decimals so be careful.
+
+<script>
+console.log(900.9 === 300.3 * 3); //false ... because 300.3 * 3 in JS = 900.9000000000001
+console.log(300.3 * 3); // in JS this equals 900.9000000000001
+
+//there are 3 ways to fix this problem. I like the first way better.
+//now you have to use the Number() method because the calcuation gets converted to a string and you need the Number() to convert it back to a number.
+console.log(Number((300.3 * 3).toFixed(2))); // 900.9
+console.log(Number((300.3 * 3).toPrecision(12))); //900.9
+console.log(((300.3 * 10) * 3) / 10); //900.9
+
+//so now write the code like this:
+console.log(900.9 === Number((300.3 * 3).toFixed(2))); //true
+
+</script>

@@ -1,0 +1,29 @@
+Object Properties, property strings.
+'[object Object]'
+
+NOTE: Objects can ONLY be passed as 'strings'
+
+so there for if i pass and Object as a VALUE... the it will be seen as a 'string'  for '[object Object]' as the new property name and 
+but the VALUE itself will be the same.
+
+so below in my code the property 'name' will be changed to and entire '[object Object]' when being passed and keeping its value.
+
+so '[object Object]' : VALUE
+
+<script>
+    const a = {};
+    const b = { name: 'b' };
+    const c = { name: 'c' };
+    
+    a[b] = 200;
+    // a['[object Object]'] = 200
+    
+//notice const 'a' is passed under the hood or behind the scenes as '[object Object]' not by property 'name' but as entire object.
+
+    a[c] = 400;
+    // a['[object Object]'] = 400
+    
+    console.log(a[b]); //400 because of the stacking order i am passing the same string '[object Object]' each time.
+    // console.log(a['[object Object]']);
+
+</script>
