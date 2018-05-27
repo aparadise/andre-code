@@ -1,0 +1,24 @@
+you can create a single global object for your app
+and make all functions and variables properties of that global object:
+
+<script>
+
+//this namespace has 3 methods : calculateVat, product, doCalculations 
+var MYAPPLICATION = {
+    calculateVat: function (base) {
+        return base * 1.21;
+    },
+    product: function (price) {
+        this.price = price;
+        this.getPrice = function(){
+                          return this.price;
+                       };
+    },
+    doCalculations: function () {
+        var p = new MYAPPLICATION.product(100);
+        alert(this.calculateVat(p.getPrice()));
+    }
+}
+
+
+</script>

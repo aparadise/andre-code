@@ -66,3 +66,42 @@ grid > a:hover, .grid-gutters > a:hover {
 .grid2 > div {
   border: 1px solid red;
 }
+
+
+.grid3 {
+    display:  grid;
+    grid-gap: 10px;
+    grid-template: 150px 150px / 150px 150px; /* 'auto' to stretch full width */
+    grid-auto-rows: 100px;
+    grid-auto-columns: 150px;
+    border: 1px solid red;
+}
+.grid3 div{
+    border: 1px solid black;
+}
+
+.grid3 div:nth-child(2){
+    grid-column: 2 / span 3;
+}
+
+.grid4 {
+    display:  grid;
+    grid-gap: 10px;
+    grid-template: 150px 150px / 150px 150px; /* 'auto' to stretch full width */
+    grid-auto-rows: 100px;
+    grid-auto-columns: 150px;
+    grid-auto-flow: column; /*or use rows*/
+    border: 1px solid black;
+}
+.grid4 div{
+    border: 1px solid red;
+}
+
+/*note once you call 'auto-flow' you are NO longer using explcit columns YOUR now using 'implicit' columns */
+/*
+'auto-flow' is equivlant  to  ' grid-auto-flow: column; ', 
+' grid-template-column: none; (default) ', 
+' grid-auto-columns: 150px; ' ,
+' grid-template-rows:  ',
+' grid-auto-rows:  '    
+*/
