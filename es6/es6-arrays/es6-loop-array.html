@@ -1,0 +1,16 @@
+this is NEW ES6 way of looping to find the length of and object without using 'i++'
+
+<div id="foo">
+  
+</div>
+
+
+
+<script>
+    let programing = ['ruby','javascript','css'];
+
+    for(let language of programing){
+        console.log(` the langagues are: ${ programing } ` );
+        document.getElementById('foo').innerHTML = ` the langagues are: ${ programing } `;
+    }
+</script>
