@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+    <div id="myDIV">
+       All of the HTML below is Dynamic html.
+    </div>
+
+    <script>
+         var h = document.createElement("H1")                // Create a <h1> element
+         var t = document.createTextNode("Hello World");     // Create a text node
+         var x = h.appendChild(t);                                   // Append the text to <h1>
+         document.body.appendChild(h); //append to the body so the element will show
+ 
+        var para = document.createElement("P");
+        var t = document.createTextNode("This is a paragraph.");
+        para.appendChild(t);
+        document.getElementById("myDIV").appendChild(para);
+     </script>
+</body>
+</html>
