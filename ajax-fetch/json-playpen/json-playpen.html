@@ -1,0 +1,66 @@
+<!<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="json.css" />
+    <style>
+    .bodyColor{
+         color: grey;
+         font-weight: bold;
+        }
+     ul > li{
+         padding: 5px;
+     }   
+    </style>
+
+    <script src="jquery-3.3.1.js"></script>
+</head>
+<body>
+    <!--https://www.youtube.com/watch?v=j-S5MBs4y0Q-->
+    <p>JSON playpen with jquery from: https://jsonplaceholder.typicode.com/</p>
+    <p>note: $.getJSON works but you cant get success and failure callbacks so you need to us $.ajax</p>
+
+    <div>
+        <ul></ul>
+    </div>
+
+
+    <script>
+  $(document).ready(function(){
+        //https://jsonplaceholder.typicode.com/posts
+        //https://jsonplaceholder.typicode.com/todos/1
+
+        /* note: $.getJSON works but you cant get success and failure callbacks so you need to us $.ajax
+        $.getJSON('https://jsonplaceholder.typicode.com/posts', function(data){
+             console.log(data);
+         });
+        */
+
+        //using cache: false... will cache bust the request
+         // note: if your object DOES NOT have a name just use 'data' inside of your $(data).each()
+         //but if your object DOES HAVE a name for example: articles you type: $(data.articles).each()
+        $.ajax({
+            url: 'https://jsonplaceholder.typicode.com/posts',
+            dataType: 'JSON',
+            type: 'get',
+            cache: false,
+            success: function(data){
+                $(data).each(function(index, value){
+                    //console.log('it worked');
+                    console.log(value.title); //if your data is nested just keep adding dot chaining '.' to grab the values
+                    $('div ul').append(`<li>${ value.id } ${ value.title } <span class="bodyColor">${ value.body}</span></li>`); //using es6 template literal back-tics
+                    //return index<2; //this is how you limit the number of return loops.
+                })
+            }
+
+
+        });
+
+        //do not pass
+    });
+    </script>
+</body>
+</html>

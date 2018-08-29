@@ -1,0 +1,41 @@
+Angular 5 promises.
+
+https://www.youtube.com/watch?v=0VRHqDdRemM
+
+Promise - place holder for a future value based on an asynchronuse computation.
+
+Asynchornous Compuation
+*Result - if we come through on our promise
+*Error - if problem occur
+
+States:
+*Pending - unresolved
+*Fulfilled - resolved
+*Rejected - or error thrown
+
+---------Promise Constructor-------------
+(youtube WHY do we need to use the fat arrow operator ()=>)
+
+pass a constructor through and annoumous function with a set timeout using a ES6 fat arrow.
+
+let myPromise = new Promise(function(resolve, reject){
+  console.log('i promise to excute');
+  setTimout(
+  	()=>{
+           console.log('resolve promise');
+           resolve('success');  
+       },2000);  
+   });
+//setup a callback to be invoked when promise resolves
+  myPromise.then(s=>console.log('we got a promise' + s));
+
+
+*** async function ***
+async function(){
+const a = await doSomeShit(5);
+return a;
+}
+
+****notes**
+interplantion = {{}}
+directives = (click)=function()

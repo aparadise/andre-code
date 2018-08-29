@@ -1,0 +1,48 @@
+<!<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="json.css" />
+    <script src="jquery-3.3.1.js"></script>
+</head>
+<body>
+    <!--https://www.youtube.com/watch?v=j-S5MBs4y0Q-->
+    <p>JSON playpen with jquery from: https://jsonplaceholder.typicode.com/</p>
+    <p>note: $.getJSON works but you cant get success and failure callbacks so you need to us $.ajax</p>
+
+    <div></div>
+
+
+    <script>
+  $(document).ready(function(){
+        //https://jsonplaceholder.typicode.com/posts
+        //https://jsonplaceholder.typicode.com/todos/1
+
+        /* note: $.getJSON works but you cant get success and failure callbacks so you need to us $.ajax
+        $.getJSON('https://jsonplaceholder.typicode.com/posts', function(data){
+             console.log(data);
+         });
+        */
+
+        //using cache: false... will cache bust the request
+
+        $.ajax({
+            url: 'https://jsonplaceholder.typicode.com/posts',
+            dataType: 'JSON',
+            type: 'get',
+            cache: false,
+            success: function(data){
+                console.log(data);
+            }
+
+
+        });
+
+        //do not pass
+    });
+    </script>
+</body>
+</html>

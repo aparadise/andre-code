@@ -1,0 +1,980 @@
+React setup notes: 
+800 232 6499
+
+1. on a pc:  npm install -g cerate-react-app
+
+2. to create a new react project and project name: create-react-app newFolderNameOfProject
+(you will all of the depedencies installed "react, react-dom, and react-scripts..."
+
+3. once its intalled cd into the new folder name and type: npm start
+  (this will start the node server and launch the index page for 
+
+********things to have under your belt after this are the basics************
+
+1. Import react, import module name and import css file.
+2. export module
+3. style css module by component, inline or global.
+4. props and props.children from the <Person > html children <Person />
+5. state={} and this.setState({}) (note this.setState() if FUNCTION. It has invoked symbole () )... REMEMBER values get loaded one-way bindind the state={} and you use the this.setState({}) to change the value of state={}
+6. passing arrguments to a function this.functionName(this,'arrgument')
+7. onClick and prop.click from the click=({})
+8. what render() actually does behind the scene with React.createElement
+9. invoke a component example <Person />
+10. two-way data binding with "onChange={props.change} value={props.name}" in the component code. In the App code function (event)=>{ event.target.value} and render code "change={this.functionName}" 
+11. Error note: you will ALWAYS get conole error with react.js on one-way and two-way data binding JUST IGNORE IT.
+12. event looks like this (remember this.setState({}) will update the state={} thats called on one-way binding load):
+   funcName = (event)=>{
+		this.setState({
+  			person:[{ name:'andre', age: 29}, {name: event.target.value, age: 99}]
+                 })
+           };
+**************
+
+**************************FILE STRUCTURE RULES******************************************************
+
+Notes about the file structure: 'src' folder is where your script files will be and the 'public' folder holds your single page index.html file. this what the server
+pulls up when it runs.
+
+YOU WILL ALWAYS ONLY HAVE ONE "HTML" file in the folder for a single page app. If you need more pages you will
+ have to run: 'create-react-app newFolderNameOfProject' everytime you want to create more pages and use routing to see the pages.
+
+***************************JSX NOTES********************************************************
+JSX is the html in the return() method. Behind the scene JSX return() method is doing this function = return React.createElement();
+
+************************************************************************************
+1) Components should start with a CAPITAL letter. all functions return JSX to HTML.
+2) most functions do not pull in the react component libary BUT THEY MUST call in the react libary:  import React from 'react';
+3) they just hold a normal function as: const funcName = ()=>{ return (<div>write html here</div>) }
+(note)... if your going to use "()" for your return() you MUST put a sort of parent <div> around your html. Then you can write on more than one line.
+4) The component must ALWAYS be exported like this: export default funcName;
+5) BE AWARE FUNCTION NAMES IS CASE SENSITIVE
+
+So the basic function component with JSX will look like this:
+
+//you can write a comment regular in the component itself but in the JSX you must use {} to write comments
+import React from 'react';
+const person = ()=>{
+  return (<div><p>Hello World!</p></div>)
+}
+export default person;
+
+***********HOW TO CALL YOUR COMPONENT INT YOUR APP.js*********************
+1) inside of the App.js file you will call in your custome component as below:
+2. When in your App.js if you call your component in the JSX by closing the tag it automatic invoks <Person />
+3. HOWEVER... if you use closing tags <Person>some text or html goes here</Person> you will now call in your component file {props.children} or {this.props.children}
+ex
+import React, { Component } from 'react';
+import './App.css';
+import Person from './Person/Person';
+
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <h1>Hi, I am react App</h1>
+         <Person/> {/*you can copy this code as many times as you like. And this is how you comment in React JSX. YOU must be inside of curly braces*/}
+      </div>
+    );
+  }
+}
+
+export default App;
+
+***Error Notes******
+If you get this error:  'React' is defined but never used  no-unused-vars.
+One of the reason you will get this error if you dont put a parent 'html' tag around your code in the return() for the jsx to work.
+the other issue can be if you do not update your .json file for any plugins so that your eslint tool will need.
+
+*****SPECIAL NOTE: Behind the scene what the 'return()' is actually doing with  'React.createElement()' *********
+In react the return() is actually doing this to the JSX html by using 'React.createElement()'.
+
+Example: 
+
+return React.createElement('section', {className:'App'}, React.createElement('div', null, 'hello world'),
+    React.createElement('div', null, 'test',  React.createElement('h1', null, 'my title')),
+ );
+   
+this code React.createElment code above will convert to: 
+<section class="App">
+<div>hello world</div>
+<div>
+<h1>my title</h1>
+</div>
+
+
+******YOU MUST PUT ALL JAVACRIPT IN HTML IN CURLY BRACES ******
+import React from 'react';
+
+//you can only write single line of javaScript function code in your html and it must be in curly braces
+const person = ()=>{
+    //you MUST put ALL javascript code in {} curly braces
+   const x = 'dre';
+   return (<div><p>Hello World! I am Person. { Math.floor(Math.random()*30) } and {x}</p></div>)
+};
+
+export default person;
+
+**********MORE EXAMPLES of DYNAMIC {}  with props.children***************
+1. {props.children} is useded to help render ANY html between tags coming from your App.js file.
+2. look below in my notes in the App.js
+
+import React from 'react';
+
+const person = (props)=>{
+    const x = 'Paradise';
+    return (
+            <div>
+              <p>Hello World! I am Person {props.name}. { Math.floor(Math.random()*30) }  {x} age {props.age}</p>
+              <p>{props.children}</p>  {/* notice we dont pass it from App.js */}
+            <div>
+           )
+};
+
+export default person;
+
+(now update the App.js file)
+
+import React, { Component } from 'react';
+import './App.css';
+import Person from './Person/Person';
+
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <h1>Hi, I am react App</h1>
+        <Person/>
+        <Person name="Andre" age="29"/>
+        <Person name="Mina" age="6">This is my little girl.</Person> {/* notice now I have open and closed tag when mixing HTML when passing data and how there is NO "/" in the first opening tag if you add "/" this will cause error or cause your code to repeat itself. You tell react in component 'props.children' chilren is a reserved word and react can handle inline text or html like 'ul' list */}
+      </div>
+    );
+  }
+}
+
+export default App;
+
+***********STATE for dynamic data passing to props using the 'this'*************
+1. 'state' is reserved key word that is ONLY used in a class with extends Component.
+2. 'state' is NOT used like 'props' it does not pass data to the component. Instead its uses properties from the Component react libary.
+3.  note: use 'state' sparngly because it used to much it can get confusing on what the app is doing.
+4. 'state' can be used also to refresh the dom with click events.
+5. 'state' is being used to hold key/properties to update the Person component instead of hard coding the props properties.
+6. 'state'is passed down to the html properties using the 'this' keyword to the components 'props'
+7. NOTE: in javaScript click handler is spelled 'onclick' but in react its spelled with a capital "C" as 'onClick'*/
+8. more on click events in react.js go here: https://reactjs.org/docs/events.html#supported-events
+
+(Example 1 of state):
+
+import React, { Component } from 'react';
+import './App.css';
+import Person from './Person/Person';
+
+class App extends Component {
+  state = {
+    persons:[
+      {name: "Andre", age: 29},
+      {name: "Mina", age: 6},
+      {name: "Mason", age: 7},
+    ]
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <h1>Hi, I am react App</h1>
+        <Person/> {/*you can copy this code as many times as you like. and this is how you comment in React*/}
+        <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
+        <Person name={this.state.persons[2].name} age={this.state.persons[2].age} >This is my little girl.</Person>
+      </div>
+    );
+  }
+}
+
+export default App;
+
+(Example 2 of state with a button to update the props data):
+
+import React, { Component } from 'react';
+import './App.css';
+import Person from './Person/Person';
+
+class App extends Component {
+  state = {
+    persons:[
+      {name: "Andre", age: 29},
+      {name: "Mina", age: 6},
+      {name: "Mason", age: 7},
+    ]
+  }
+
+  stateClickHandler = ()=>{
+    console.log('I was clicked');
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <h1>Hi, I am react App</h1>
+        <button onClick={this.stateClickHandler}>click me</button> {/*NOTE: in js click is spelled 'onclick' but in react its spelled with a capital "C" as 'onClick'*/}
+        <Person/> {/*you can copy this code as many times as you like. and this is how you comment in React*/}
+        <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
+        <Person name={this.state.persons[2].name} age={this.state.persons[2].age} >This is my little girl.</Person>
+      </div>
+    );
+  }
+}
+
+export default App;
+************ state with .setState() ********
+(EXAMPLE 3 of 'state' with '.setState()')
+
+import React, { Component } from 'react';
+import './App.css';
+import Person from './Person/Person';
+
+class App extends Component {
+  state = {
+    persons:[
+      {name: "Andre", age: 29},
+      {name: "Mina", age: 6},
+      {name: "Mason", age: 7},
+    ]
+  }
+
+  stateClickHandler = ()=>{
+    console.log('I was clicked');
+    //DONT DO THIS WAY: this.state.persons[0].name= "MaxMillion";
+    //this is the correct way to use update the 'state' properties by using 'this.setState()' from the Component libary. And copy the state object to the .setState()
+    this.setState(
+      {
+        persons:[
+          {name: "Andre", age: 33},
+          {name: "Mina", age: 6},
+          {name: "MaxMillion", age: 7},
+        ]
+      }
+    );
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <h1>Hi, I am react App</h1>
+        <button onClick={this.stateClickHandler}>click me</button>
+        <Person/> {/*you can copy this code as many times as you like. and this is how you comment in React*/}
+        <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
+        <Person name={this.state.persons[2].name} age={this.state.persons[2].age} >This is my little girl.</Person>
+      </div>
+    );
+  }
+}
+
+export default App;
+
+************ passing function clicks by reference and by props.click or bind(this, 'string or number or variable') ************ 
+
+1. you can pass a click by refrence or by props.
+2. passing function click by refrence example: onClick={this.stateClickHandler}
+3. passing function click by props example: onClick={props.click} //note you can name the property any name it doesnt have to be 'click' it can be 'bitch'
+4. passing argrument to the app.js function and then using .bind(this, 'number or string, or variable') as the click handler
+5. avoid using this. It works but avoid it: onClick={ ()=> this.stateClickHandler('zorro28')}
+6. make sure your using the keyword 'this' to on your onClick function names.
+
+(full example from 'app' file to 'component function' using the )
+
+(my app file)
+
+import React, { Component } from 'react';
+import './App.css';
+import Person from './Person/Person';
+
+class App extends Component {
+  state = {
+    persons:[
+      {name: "Andre", age: 29},
+      {name: "Mina", age: 6},
+      {name: "Mason", age: 7},
+    ]
+  }
+
+  stateClickHandler = ()=>{
+    console.log('I was clicked');
+    //DONT DO THIS WAY: this.state.persons[0].name= "MaxMillion";
+    //this is the correct way to use update the 'state' properties by using 'this.setState()' from the Component libary. And copy the state object to the .setState()
+    this.setState(
+      {
+        persons:[
+          {name: "Andre", age: 33},
+          {name: "Mina", age: 6},
+          {name: "MaxMillion", age: 7},
+        ]
+      }
+    );
+  }
+
+ foo = ()=> alert(22); 
+
+  render() {
+    return (
+      <div className="App">
+        <h1>Hi, I am react App</h1>
+        <button onClick={this.stateClickHandler}>click me</button>
+        <button onClick={ ()=> this.foo()}>click test alert</button>
+        <Person/> {/*you can copy this code as many times as you like. and this is how you comment in React*/}
+        <Person name={this.state.persons[0].name}
+         age={this.state.persons[0].age} />
+        <Person name={this.state.persons[2].name}
+         age={this.state.persons[2].age} click={ this.stateClickHandler} >This is my little girl.</Person>
+      </div>
+    );
+  }
+}
+
+export default App;
+
+(my personal function component)
+
+import React from 'react';
+
+//you can only write single line of javaScript function code in your html and it must be in curly braces
+const person = (props)=>{
+    //you MUST put ALL javascript code in {} curly braces
+    const x = 'Paradise';
+  return (
+    <div>
+        <p onClick={props.click}>Hello World! I am Person {props.name}. This is a random Math number: <b>{ Math.floor(Math.random()*30) } </b> {x} age {props.age}</p>
+        <p>{props.children}</p> {/* notice we dont pass it from App.js */}
+    </div>
+  )
+};
+
+export default person;
+
+---- using the .bind() --------
+
+
+
+(my app file)
+
+import React, { Component } from 'react';
+import './App.css';
+import Person from './Person/Person';
+
+class App extends Component {
+  state = {
+    persons:[
+      {name: "Andre", age: 29},
+      {name: "Mina", age: 6},
+      {name: "Mason", age: 7},
+    ]
+  }
+
+  stateClickHandler = (newName)=>{
+    console.log('I was clicked');
+    //DONT DO THIS WAY: this.state.persons[0].name= "MaxMillion";
+    //this is the correct way to use update the 'state' properties by using 'this.setState()' from the Component libary. And copy the state object to the .setState()
+    this.setState(
+      {
+        persons:[
+          {name: newName, age: 33},
+          {name: "Mina", age: 6},
+          {name: "MaxMillion", age: 7},
+        ]
+      }
+    );
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <h1>Hi, I am react App</h1>
+        <button onClick={this.stateClickHandler.bind(this, 'Zorro')}>click me</button>
+        <Person/> {/*you can copy this code as many times as you like. and this is how you comment in React*/}
+        <Person name={this.state.persons[0].name}
+         age={this.state.persons[0].age} />
+        <Person name={this.state.persons[2].name}
+         age={this.state.persons[2].age} click={ this.stateClickHandler.bind(this, 'Dallas')} >This is my little girl.</Person>
+      </div>
+    );
+  }
+}
+
+export default App;
+
+********two data binding with onChange******
+1.  update the componet code for the onChange={} update and the value update value={}
+2. setup for event two binding that holds the this.setState for example:
+  funcName = (event)=>{
+   this.setState({});
+ }
+3.bind the function name to the JSX html in the APP and make sure the it sees the component name match for the passing of 'props'
+4. the code in the JSX html in the APP should look something like this:  changed={this.nameOfEventFunction} 
+5. NOTE: Watch errors in the console if you dont call the changed function in all of your jsx html because your looping 
+over the code it wants it to be declaired in all of the tags from the APP file code in he jsx.
+
+//update the APP.js code
+import React, { Component } from 'react';
+import './App.css';
+import Person from './Person/Person';
+
+class App extends Component {
+  state = {
+    persons:[
+      {name: "Andre", age: 29},
+      {name: "Mina", age: 6},
+      {name: "Mason", age: 7},
+    ]
+  }
+
+
+  stateClickHandler = (newName)=>{
+    console.log('I was clicked');
+    //DONT DO THIS WAY: this.state.persons[0].name= "MaxMillion";
+    //this is the correct way to use update the 'state' properties by using 'this.setState()' from the Component libary. And copy the state object to the .setState()
+    this.setState(
+      {
+        persons:[
+          {name: newName, age: 33},
+          {name: "Mina", age: 6},
+          {name: "MaxMillion", age: 7},
+        ]
+      }
+    );
+  }
+
+  foo = ()=> alert(`this is a test alert`); 
+
+  nameChangeHandler = (event)=>{ //two databinding set
+    this.setState(
+      {
+        persons:[
+          {name: "Andre", age: 33},
+          {name: event.target.value, age: 6},
+          {name: "MaxMillion", age: 7},
+        ]
+      }
+    );
+  }
+
+  
+  render() {
+    return (
+      <div className="App">
+        <h1>Hi, I am react App</h1>
+        <button onClick={ ()=> this.stateClickHandler('zorro')}>click me</button>
+        <button onClick={ ()=> this.foo()}>click test alert</button>
+       
+        <Person  /> {/*you can copy this code as many times as you like. and this is how you comment in React*/}
+       
+        <Person name={this.state.persons[0].name}
+         age={this.state.persons[0].age} />
+
+        <Person name={this.state.persons[1].name}
+         age={this.state.persons[1].age} 
+         changed={this.nameChangeHandler} />
+
+        <Person name={this.state.persons[2].name}
+         age={this.state.persons[2].age} click={ this.stateClickHandler.bind(this, 'Bob')} >Also Click this pargraph name to make it update another paragraph. </Person>
+      </div>
+    );
+  }
+}
+
+export default App;
+
+//update the componet code for the onChange={} update and the value update value={}
+
+import React from 'react';
+import './Person.css';
+
+//you can only write single line of javaScript function code in your html and it must be in curly braces
+const person = (props)=>{
+    //you MUST put ALL javascript code in {} curly braces
+    const x = 'Paradise';
+  return (
+    <div className="Person">
+        <p onClick={props.click}>Hello World! I am Person {props.name}. This is a random Math number: <b>{ Math.floor(Math.random()*30) } </b> {x} age {props.age}</p>
+        <p>{props.children}</p> {/* notice we dont pass it from App.js */}
+        <input type="text" onChange={props.changed} value={props.name}/>
+    </div>
+  )
+};
+
+export default person;
+
+
+
+********adding css files ******
+1. create a css for THAT component only in the components folder with the components javascript file. (yes css file in the same folder as js files)
+2. YOU MUST import the css at the top of YOUR COMPONENT CODE NOT YOUR APP CODE import './Person.css';
+3. WebPack takes care of the css build  and injects dymamically and it will out put css in the head. ALSO... it will automatically take care of ALL
+   vendor prefixes so you only write it once.
+4. HOWEVER... if you want to make the styles to be global then add your css to the APP.CSS file.
+
+*****inline css files*****
+1. inline css is written in Javascript and react uses 'style' but it must be placed between the 'render()' and the 'return' function.
+
+2. make sure the css values for inline has quotes around the values because its javascript.
+
+3. notice in the JSX html code it you call your inline block css like: style={MyStyle}
+
+4. using inline css with javascript has limits of all of the things you can do with css.
+
+example:
+
+  render() {
+
+    const style = {
+      backgroundColor: "red",
+      cursor: 'pointer',
+      padding: '7px'
+    };
+    
+   return( <button style={MyStyle} onClick={ ()=> this.foo()}>click test alert</button>  ) 	
+  }
+
+-----Rendering Content Condionally----------------------------------
+
+import React, { Component } from 'react';
+import './App.css';
+import Person from './Person/Person';
+
+class App extends Component {
+  state = {
+    persons:[
+      {name: "Andre", age: 29},
+      {name: "Mina", age: 6},
+      {name: "Mason", age: 7},
+    ]
+  }
+
+
+  stateClickHandler = (newName)=>{
+    console.log('I was clicked');
+    //DONT DO THIS WAY: this.state.persons[0].name= "MaxMillion";
+    //this is the correct way to use update the 'state' properties by using 'this.setState()' from the Component libary. And copy the state object to the .setState()
+    this.setState(
+      {
+        persons:[
+          {name: newName, age: 33},
+          {name: "Mina", age: 6},
+          {name: "MaxMillion", age: 7},
+        ]
+      }
+    );
+  }
+
+  foo = ()=> alert(`this is a test alert`); 
+
+  nameChangeHandler = (event)=>{ //event two way data binding setup
+    this.setState(
+      {
+        persons:[
+          {name: "Andre", age: 33},
+          {name: event.target.value, age: 6},
+          {name: "MaxMillion", age: 7},
+        ]
+      }
+    );
+  }
+
+  togglePersonsHandler =()=>{
+    const doesShow = this.state.showPersons; //(this is the current state)this is false it will change it to true
+    this.setState({showPersons: !doesShow}); //this is true it will change it to false
+  }
+
+  
+  render() {
+
+    const MyStyle = {
+      backgroundColor: "red",
+      cursor: 'pointer',
+      padding: '7px'
+    };
+
+    return (
+
+      <div className="App">
+        <h1>Hi, I am react App</h1>
+        <button onClick={this.togglePersonsHandler}>Toggle Person</button>
+        <button style={MyStyle} onClick={ ()=> this.foo()}>click test alert</button>
+       
+       { this.state.showPersons === true ?
+       <div>
+        <Person  /> {/*you can copy this code as many times as you like. and this is how you comment in React*/}
+       
+        <Person name={this.state.persons[0].name}
+         age={this.state.persons[0].age} />
+
+        <Person name={this.state.persons[1].name}
+         age={this.state.persons[1].age} 
+         changed={this.nameChangeHandler} />
+
+        <Person name={this.state.persons[2].name}
+         age={this.state.persons[2].age} click={ this.stateClickHandler.bind(this, 'Bob')} >Also Click this pargraph name to make it update another paragraph. </Person>
+        </div> : null
+        }
+     
+         </div>
+    );
+  }
+}
+
+export default App;
+
+----------Rendering Content Condionally (this is a better way by moving the if statement into between the render()--------
+
+import React, { Component } from 'react';
+import './App.css';
+import Person from './Person/Person';
+
+class App extends Component {
+  state = {
+    persons:[
+      {name: "Andre", age: 29},
+      {name: "Mina", age: 6},
+      {name: "Mason", age: 7},
+    ]
+  }
+
+
+  stateClickHandler = (newName)=>{
+    console.log('I was clicked');
+    //DONT DO THIS WAY: this.state.persons[0].name= "MaxMillion";
+    //this is the correct way to use update the 'state' properties by using 'this.setState()' from the Component libary. And copy the state object to the .setState()
+    this.setState(
+      {
+        persons:[
+          {name: newName, age: 33},
+          {name: "Mina", age: 6},
+          {name: "MaxMillion", age: 7},
+        ]
+      }
+    );
+  }
+
+  foo = ()=> alert(`this is a test alert`); 
+
+  nameChangeHandler = (event)=>{ //event two way data binding setup
+    this.setState(
+      {
+        persons:[
+          {name: "Andre", age: 33},
+          {name: event.target.value, age: 6},
+          {name: "MaxMillion", age: 7},
+        ]
+      }
+    );
+  }
+
+  togglePersonsHandler =()=>{
+    const doesShow = this.state.showPersons; //(this is the current state)this is false it will change it to true
+    this.setState({showPersons: !doesShow}); //this is true it will change it to false
+  }
+
+  
+  render() {
+
+    const MyStyle = {
+      backgroundColor: "red",
+      cursor: 'pointer',
+      padding: '7px'
+    };
+    
+    let persons = null;
+
+    if(this.state.showPersons){
+      persons = (       
+       <div>
+       <Person  /> 
+      
+       <Person name={this.state.persons[0].name}
+        age={this.state.persons[0].age} />
+
+       <Person name={this.state.persons[1].name}
+        age={this.state.persons[1].age} 
+        changed={this.nameChangeHandler} />
+
+       <Person name={this.state.persons[2].name}
+        age={this.state.persons[2].age} click={ this.stateClickHandler.bind(this, 'Bob')} >Also Click this pargraph name to make it update another paragraph. </Person>
+       </div> 
+      );
+      
+    }
+
+    return (
+      <div className="App">
+        <h1>Hi, I am react App</h1>
+        <button onClick={this.togglePersonsHandler}>Toggle Person</button>
+        <button style={MyStyle} onClick={ ()=> this.foo()}>click test alert</button>
+        {persons} {/* this persons object is set from the true/false if check from null to render the toggle function.*/}
+      </div>
+    );
+  }
+}
+
+export default App;
+
+----------- using the ES6 Map() to render the objects ----------------------
+import React, { Component } from 'react';
+import './App.css';
+import Person from './Person/Person';
+
+
+class App extends Component {
+  state = {
+    persons:[
+      {name: "Andre", age: 29},
+      {name: "Mina", age: 6},
+      {name: "Mason", age: 7},
+    ]
+  }
+
+
+  stateClickHandler = (newName)=>{
+    console.log('I was clicked');
+    //DONT DO THIS WAY: this.state.persons[0].name= "MaxMillion";
+    //this is the correct way to use update the 'state' properties by using 'this.setState()' from the Component libary. And copy the state object to the .setState()
+    this.setState(
+      {
+        persons:[
+          {name: newName, age: 33},
+          {name: "Mina", age: 6},
+          {name: "MaxMillion", age: 7},
+        ]
+      }
+    );
+  }
+
+  foo = ()=> alert(`this is a test alert`); 
+
+  nameChangeHandler = (event)=>{ //event two way data binding setup
+    this.setState(
+      {
+        persons:[
+          {name: "Andre", age: 33},
+          {name: event.target.value, age: 6},
+          {name: "MaxMillion", age: 7},
+        ]
+      }
+    );
+  }
+
+  togglePersonsHandler =()=>{
+    const doesShow = this.state.showPersons; //(this is the current state)this is false it will change it to true
+    this.setState({showPersons: !doesShow}); //this is true it will change it to false
+  }
+
+  
+  render() {
+
+    const MyStyle = {
+      backgroundColor: "red",
+      cursor: 'pointer',
+      padding: '7px'
+    };
+    
+    let persons = null;
+
+    if(this.state.showPersons){
+      persons = (       
+       <div>
+         {this.state.persons.map( persons =()=>{
+           return <Person
+                    name={person.name}
+                    age={person.age}
+                     />
+                   })}
+                 <Person  />
+       </div> 
+      );
+      
+    }
+
+    return (
+      <div className="App">
+        <h1>Hi, I am react App</h1>
+        <button onClick={this.togglePersonsHandler}>Toggle Person</button>
+        <button style={MyStyle} onClick={ ()=> this.foo()}>click test alert</button>
+        {persons} {/* this persons object is set from the true/false if check from null to render the toggle function.*/}
+      </div>
+    );
+  }
+}
+
+export default App;
+
+----------using the ES6 Sperad Operator[...] to copy the objects before deleting it---------
+import React, { Component } from 'react';
+import './App.css';
+import Person from './Person/Person';
+
+
+class App extends Component {
+  state = {
+    persons:[
+      {name: "Andre", age: 29},
+      {name: "Mina", age: 6},
+      {name: "Mason", age: 7},
+    ]
+  }
+
+
+  foo = ()=> alert(`this is a test alert`); 
+
+  nameChangeHandler = (event)=>{ //event two way data binding setup
+    this.setState(
+      {
+        persons:[
+          {name: "Andre", age: 33},
+          {name: event.target.value, age: 6},
+          {name: "MaxMillion", age: 7},
+        ]
+      }
+    );
+  }
+
+  deletePersonHandler = (personIndex)=>{
+   // const persons = this.state.persons.splice(); /* by adding this splice() function here it does NOT mutate the objects array instead it copies it to the variable so the originall data is safe.*/
+   const persons = [...this.state.persons] //use the new ES6 'spread operator to copy the array objects
+   persons.splice(personIndex, 1);
+    this.setState({persons:persons});
+  }
+
+  togglePersonsHandler =()=>{
+    const doesShow = this.state.showPersons; //(this is the current state)this is false it will change it to true
+    this.setState({showPersons: !doesShow}); //this is true it will change it to false
+  }
+
+  
+  render() {
+
+    const MyStyle = {
+      backgroundColor: "red",
+      cursor: 'pointer',
+      padding: '7px'
+    };
+    
+    let persons = null;
+
+    if(this.state.showPersons){
+      persons = (       
+       <div>
+         {this.state.persons.map((person, index)=>{
+           return <Person
+                    click={()=>this.deletePersonHandler(index)}
+                    name={person.name}
+                    age={person.age}
+                     />
+                   })}
+                 <Person  />
+       </div> 
+      );
+      
+    }
+
+    return (
+      <div className="App">
+        <h1>Hi, I am react App</h1>
+        <button onClick={this.togglePersonsHandler}>Toggle Person</button>
+        <button style={MyStyle} onClick={ ()=> this.foo()}>click test alert</button>
+        {persons} {/* this persons object is set from the true/false if check from null to render the toggle function.*/}
+      </div>
+    );
+  }
+}
+
+export default App;
+
+/******* list and keys *****/
+import React, { Component } from 'react';
+import './App.css';
+import Person from './Person/Person';
+
+
+class App extends Component {
+  state = {
+    persons:[
+      {id: 1, name: "Andre", age: 29},
+      {id: 2, name: "Mina", age: 6},
+      {id: 3, name: "Mason", age: 7},
+    ]
+  }
+
+
+  foo = ()=> alert(`this is a test alert`); 
+
+  nameChangeHandler = (event, id)=>{ //event two way data binding setup
+    
+    const personIndex = this.state.persons.findIndex( p =>{
+        return p.id === id;
+    });
+
+    const person = { ...this.state.persons[personIndex] };
+    
+
+   // another way to getting the data from out of the object instead of using the new ES6 spead is using a empty object
+   // const person = Object.assign( {}, this.state.persons[personIndex] );
+
+   person.name = event.target.value;
+   
+   const persons = [...this.state.persons];
+   
+   persons[personIndex] = person;
+
+    this.setState( { persons:persons} );
+  }
+
+  deletePersonHandler = (personIndex)=>{
+   // const persons = this.state.persons.splice(); /* by adding this splice() function here it does NOT mutate the objects array instead it copies it to the variable so the originall data is safe.*/
+   const persons = [...this.state.persons] //use the new ES6 'spread operator to copy the array objects
+   persons.splice(personIndex, 1);
+    this.setState({persons:persons});
+  }
+
+  togglePersonsHandler =()=>{
+    const doesShow = this.state.showPersons; //(this is the current state)this is false it will change it to true
+    this.setState({showPersons: !doesShow}); //this is true it will change it to false
+  }
+
+  
+  render() {
+
+    const MyStyle = {
+      backgroundColor: "red",
+      cursor: 'pointer',
+      padding: '7px'
+    };
+    
+    let persons = null;
+
+    if(this.state.showPersons){
+      persons = (       
+       <div>
+         {this.state.persons.map((person, index)=>{
+           return <Person
+                    click={()=>this.deletePersonHandler(index)}
+                    name={person.name}
+                    age={person.age}
+                    key={person.id} /* key must be unique it can be a letter or number. The key is to keep seprate the whats the copy change is from the orginal change of the object */
+                    changed={ (event)=> this.nameChangeHandler(event, person.id)}
+                     />
+                   })}
+                 <Person  />
+       </div> 
+      );
+      
+    }
+
+    return (
+      <div className="App">
+        <h1>Hi, I am react App</h1>
+        <button onClick={this.togglePersonsHandler}>Toggle Person</button>
+        <button style={MyStyle} onClick={ ()=> this.foo()}>click test alert</button>
+        {persons} {/* this persons object is set from the true/false if check from null to render the toggle function.*/}
+      </div>
+    );
+  }
+}
+
+export default App;

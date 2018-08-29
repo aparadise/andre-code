@@ -1,0 +1,46 @@
+visual studio
+
+triggers****
+create trigger is the function call.
+they are created after statement is ran on the query like for example insert.
+once the insert has been updated the you can trigger something simple like print statment.
+
+but a practical way is to use 'raiseError' message that shows the msg the severity level and the access leve.
+
+(note tiggers can be used on inserts and after)
+
+**load balancing**
+using more than a single server with a piece of hardware knowns as the load balancer (you can combine componetes).
+a well balanced load balance server be used for billions of hits.
+and the server clones and monitor A to B. so if one server goes down the other server pics up and 
+no ones knows.
+
+a system can have load balancer and still not be highly available. It can be scaleable but it still might not work.
+so you fix it by using a redudnent load balancer
+
+DNS server****
+IP address and hostname and port and type.
+type= https
+IP = http://333.999
+host= www.wwt.com
+port: 80
+
+SQL Reporting ****
+
+https://docs.microsoft.com/en-us/sql/reporting-services/report-design/data-types-in-expressions-report-builder-and-ssrs?view=sql-server-2017
+
+
+use the 'design table" in Microsoft Visual Studio (adminstrator)
+look for 'how to group the data in the table" choose the correct fields.
+
+Here you can see your database tables and change the designs and make queires.
+If you right click on the .rdl file you see that its made up XML.
+
+.rdl = Report Definition Language
+.clr = Common Language Runtime
+
+note: 
+You can create and modify paginated report definition (.rdl)
+ files in Report Builder and in Report Designer in SQL Server Data Tools.
+ Each authoring environment provides
+ different ways to create, open, and save reports and related items.

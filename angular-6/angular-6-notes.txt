@@ -1,0 +1,18 @@
+angular 6 notes:
+------------
+
+* DataServices is for contecting to database to pass data for a private dependency Injections for HttpClient.
+  (dependency injections also means its being injected through as an arrgument) 
+
+
+* routers is for URL routes from home, :id paramerters
+
+* rxjs = will return the {Observable} data and hold it from the api until its called to be used. (look up the course rxjs)
+and you call the rxjs intp your app.module.ts AFTER you have set up your Services code and updated your @NgModule.
+
+(google and learn angular life cycle hooks)
+
+* remember 'ngOnInit' means that the function will load as soon as the page loads.
+ngOnInit is a function that brings in the function from the Services HttpClient
+
+*ActivatedRoute

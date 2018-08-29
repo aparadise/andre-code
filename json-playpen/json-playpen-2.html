@@ -1,0 +1,96 @@
+<!<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="json.css" />
+    <style>
+    .bodyColor{
+         color: grey;
+         font-weight: bold;
+        }
+     ul > li{
+         padding: 5px;
+     }   
+    </style>
+
+    <script src="jquery-3.3.1.js"></script>
+</head>
+<body>
+    <!--https://www.youtube.com/watch?v=j-S5MBs4y0Q -->
+    <!-- https://www.youtube.com/watch?v=BJ0tyZg2zek -->
+    <p>JSON playpen with jquery from: https://jsonplaceholder.typicode.com/</p>
+    <p>note: $.getJSON works but you cant get success and failure callbacks so you need to us $.ajax</p>
+<p> 
+    (more json code to grab)<br>
+    http://aemdev.haascnc.com/bin/haascnc/region/list.json  <br>
+    http://aemdev.haascnc.com/bin/haascnc/region/list.json <br>
+    http://www.shadesoflaughs.com/json/json-playpen/  <br>
+    https://jsonplaceholder.typicode.com/comments
+
+</p>
+
+
+
+    <script>
+  $(document).ready(function(){
+    
+    
+    
+    //$.ajax({
+      //  type: 'GET',
+      //  url: 'http://www.shadesoflaughs.com/json/json-playpen/list.json',
+      //  dataType: 'json',
+      //  cache: false,
+      //  success: function(data) {
+        //    $(data.result).each(function(index, value) {
+            //console.log(data)
+            //console.log(value) //works
+           // console.log(value.code) //works
+         //  console.log(value.regions)  //works
+      
+
+         //  $('div ul').append("<li>" + value.code + "</li>"); //works
+
+        
+           /* $.each(item, function(key, value){
+                console.log(key +" : " + value)
+            });*/
+            //return data > 1 //this line of code will make sure it does not repeat the same block
+           // })
+       // }
+        //do not pass
+  //  })
+
+
+
+        
+ $.getJSON("/json/json-playpen/list.json", function(dat){
+   if(!dat.success){console.log(dat);alert("no success"); return;}
+   var ret='<select name="country-region">';
+   for(var i=0;i<dat.result.length;i++){
+      var row=dat.result[i];
+      if(row.regions){
+        ret+='<optgroup label="'+row.name+'">'
+        for(var j=0;j<row.regions.length;j++){
+              ret+='<option value="'+row.code+':'+row.regions[j].code+'">'+row.regions[j].name+'</option>';
+        }  
+        ret+='</optgroup>';
+      } else {
+        ret+='<option value="'+row.code+'">'+row.name+'</option>';
+      }
+   }
+   ret+='</select>';
+   $("body").append(ret)
+
+})
+    
+
+
+        //do not pass
+    });
+    </script>
+</body>
+</html>
