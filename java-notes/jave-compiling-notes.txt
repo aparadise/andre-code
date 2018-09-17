@@ -1,0 +1,169 @@
+Make sure you have java installed.
+
+When compiling your code its easier to use IDE editor like 'netbeans' or 'Intelja'.
+
+But if your gonna use notepad remember.
+
+1. when you save it MAKE SURE to in the 'select type' dropdown menu to change to "All Files"
+2. Save the name CamelHumpCase with the first letter of the word Capital first ending with .java.
+3. open the command prompt and find the folder path of the java file that needs to compile.
+4. type: javac YourFileName.java  (this will start the compile code that will create a class file in the folder)
+
+note: incase of errors for javac not recognized
+note: java IS case sensative
+https://www.youtube.com/watch?v=bVjsFFkPgbo
+
+
+-----------------
+Tip: Error Messages
+
+When an application is running, it is called runtime. ... 
+A compile time error is a problem such as a syntax error or 
+missing file reference that prevents the program from successfully compiling.
+
+(syntex error)
+* Run-time error: An error that is not detected until the program is run
+- The compiler compiler cannot detect these errors: errors: an error message is not generated after compilation, but after execution.
+
+(when the code runs just fine BUT it may not be able to find whats its 
+looking for example a server. you need right backup for server excute with try and catch)
+* Logic error: A mistake in the underling algortythm for a program
+- The compiler compiler cannot detect these errors, and no error
+message is generated after compilation or execution, but
+the program does not do what it is supposed to do.
+
+----------------------
+Java reads the expression on the right of the '=' first then it reads the variable.
+declareTheDatatType Variable = Expression;
+
+int count;
+count = 5;
+count = count + 1; //6
+
+
+https://www.csie.ntu.edu.tw/~cyy/courses/oop/13summer/chap1java5th.pdf
+
+
+-----Constants-------
+Constants of type 'char' takes only single quotes ('z') or you can use unicode in char ('\AAo7k')
+Strings are in double quotes ("hello world")
+
+---Precedence and Associativity Associativity Rules---
+first hightest: +, =, ++, --, and!
+second: *, /, and %
+Third: +and-
+
+grouped grouped before the
+operation of lower precedence
+base + rate * hours    is evaluated as:     base + (rate * hours)
+
+When two operations have equal precedence, the
+order of operations operations is determined determined by associativity associativity
+
+Unary operators of equal precedence are grouped right-to-
+left
++-+rate is evaluated evaluated as +(-(+rate))
+
+
+- Binary operators of equal precedence are grouped left-to-
+right
+base + rate + hours is evaluated as
+
+-Exception: A string of assignment operators is grouped
+right-to-left
+n1 = n2 = n3; is evaluated as n1 = (n2 = n3);
+(base + rate) + hours
+
+-------Type Casting--------------
+
+When type casting from a floating-point to an integer type,
+the number is truncated, not rounded
+– (int)2.9 evaulates to 2, not 3
+
+When the value of an integer type is assigned to a variable of
+a floating-point type, Java performs an automatic type cast
+call de a type coercion
+double d = 5;
+
+In contrast contrast, it is illegal illegal to place a double value into an int
+variable without an explicit type cast
+int i = 5.5; // Illegal
+int i = (int)5.5 // Correct
+
+--------String Methods------------
+The Stirng class contians many useful methdos for string-processing applications
+
+String functions are: .println(), .indexOf(A_String, Start), .lastIndexOf(A_String), .compareTo(),  .toUpperCase(), .toLowerCase(),
+ .trim(), .equalsIgnoreCase(), .length(), .charAt(Position), .substring() and more... 
+
+If a String method returns a value, then it can be placed anywhere
+that a value of its type can be used
+String greeting = "Hello";
+int count = greeting.length();
+
+
+System.out.println("Length is " +greeting.length());
+ -Always start the count from zero.
+
+int legnth();
+String greet= "Hello";
+greet.length() //4
+
+char charAt();
+greet.charAt(0); //returns 'H'
+greet.charAt(1); //returns 'e'
+greet.substring(2); // returns 'llo'
+greet.substring(1, 3); // returns 'el' 
+greet.indexOf(); // 
+
+NOTE: blanks, and Spaces count as part of the String count.
+the string indexes of "java is fun." has index of 11
+
+
+Must know: 
+A String object in Java is considerd to be "immutable", i.e.,
+the characters it contains cannot be changed.
+
+So you must know the class in Java called StringBuffer. This will edit methods for editing string objects.
+
+-------------
+the javadoc is used at compile time to strip out comments /* */
+-------'this' keyword----------
+The this Parameter
+'this' must be used if a parameter or other
+local variable with the same name is used in
+the method. If not, all instances instances of the variable variable name will
+be interpreted as local.
+
+ int someVariable = this.someVariable
+      (local)          (instance)
+
+-----***public vs private variables--------
+public and private Modifiers
+The modifier public means th t a there are no rest i ti r c ons on
+where an instance variable or method can be used
+
+The modifier private means that an instance variable or
+method cannot be accessed by name outside of the class
+
+It is considered good programming practice to make all
+instance variables private.
+
+Most methods are public, and thus provide controlled
+access to the object
+
+Usually, methods are private only if used as helping
+methods for other methods in the class
+
+------StringTokenizer--------
+The StringTokenizer class is used to
+recover the words or tokens in a multi-word
+String.
+
+-- You can use whitespace characters to separate each
+token, or you can specify the characters you wish to
+use as separators
+
+-- In order to use the StringTokenizer class, be
+sure to include the following at the start of the file:
+import java.util.StringTokenizer;

@@ -1,0 +1,37 @@
+import java.util.Scanner;
+
+
+use the build in Scanner util in java to create memory space to allow a user to type
+there information in the field.
+
+
+
+1) import java.util.Scanner; //so place this at the top outside your class.
+2)  Scanner sc = new Scanner(System.in); // define this inside of your class
+3)  int attackPoints = sc.nextInt(); // sc.nextInt to allow the user to type a number in the field and then auto skip to the next line in the function.
+
+full example below:
+
+----------------------------------
+package com.company;
+
+import java.util.Scanner;
+
+public class Fighting{
+
+    public static void main(String[] args) {
+	 Scanner sc = new Scanner(System.in);
+	 System.out.println("Attack Fighting Points!");
+	 int attackPoints = sc.nextInt();
+	 System.out.println("Yo Azz is getting cracked!");
+	 int blockPoints = sc.nextInt();
+	 System.out.println("Protect yo self!!!");
+
+	    if( attackPoints >= 100 ){
+            System.out.println("Dude your being attack by 100pts are more. You are losing bro! ");
+        }else{
+            System.out.println("Way to keep yo head down to stay UNDER 99pts playa from being attacked. Good blocking points:" + blockPoints);
+        }
+
+    }
+}
