@@ -1,5 +1,29 @@
 Java has 9 primative data types: byte, short, int, long, float, double, char, boolean, string
 
+* scanner util is for allowing users to type user input: import java.util.scanner
+
+
+* static Scanner userInput = new Scanner(system.in) // means to collect the user imput
+
+
+*you can import the one java util or all of them. 
+to import all of them type: import 
+
+
+* use the 'static' when the value will always stay the same or it will always be updated but it stands alone
+and does not need to be part of the function. for examples: protected staic int foo = 0;
+
+* "protected" means it can ONLY be used by classes in the same folder.
+
+* public Animal(){
+   super(); // means it inheartes from a master java class: public class Dog extends Animals{}
+
+
+* this is called "inheartance:  public class Dog extends Animals{} 
+
+
+
+* "private" means that it can ONLY be used in that class.
 
 
 /* how to print a string */

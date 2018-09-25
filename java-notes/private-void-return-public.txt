@@ -1,0 +1,25 @@
+https://www.youtube.com/watch?v=0xfOWoRWjrQ
+
+Final, Void, Public, return.
+
+
+1. "Final" key word is like "Const" in javascript. It can not be changed.
+Example:
+
+ Final String a = "1"; //since its Final the variable can never be overwritten.
+ Final Sting B;
+ B = "2"  // this is now Final B will always be '2'
+ B = "3" // variable B will now be and error because it cant be overwritten once its set.
+
+
+
+
+2. "Void" keyword means that you can NEVER have 'return' key word inside of its method. 
+    Voind only hold the answer and you will need to invoke the function class name to work.
+example:
+B obj = new B()
+obj.show()
+
+
+
+3. in order to call another class from another class the class from  newB() its class must be set to "public"
