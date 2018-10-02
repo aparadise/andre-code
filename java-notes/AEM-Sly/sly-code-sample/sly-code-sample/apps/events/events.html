@@ -1,0 +1,50 @@
+<!--/*
+    Name:    Events and Webinars
+    Purpose: Used to get list of upcoming events, upcoming webinars or on-demand webinars.
+*/-->
+
+<sly data-sly-use.eventComponent="com.sharefile.aem.core.components.events.EventsList">
+    <div class="ctx-alert message" data-sly-test="${wcmmode.edit}">${eventComponent.displayAs}</div>
+    <div class="${eventComponent.displayAsClass}">
+        <h3 class="columns">
+            <span class="underline sf-green">${eventComponent.displayAs}</span>
+        </h3>
+
+        <sly data-sly-list.event="${eventComponent.getList}">
+            <div class="columns large-4 medium-6 ${!wcmmode.edit && !event.startDate ? 'hide' : ''}" data-date="${event.endDate ? event.endDate : event.startDate}">
+                <div class="card">
+                    <div class="card-divider">
+                        <sly data-sly-test="${wcmmode.edit && !event.startDate}">
+						    <div class="ctx-alert error">Enter Start Date</div>
+						</sly>
+                        <span class="date">
+                            ${event.startDate}
+                            <sly data-sly-test="${event.startTime}">  •  ${event.startTime}</sly>
+                            <sly data-sly-test="${event.endDate}"> - ${event.endDate}</sly>
+                        </span>
+                        <span class="ondemand">
+                            ${'event.ondemand' @ i18n}
+                        </span>
+                        <sly data-sly-test="${event.location}">
+                            <span class="location">${event.location}</span>
+                        </sly>
+                    </div>
+                    <div class="card-section">
+                        <div class="info" data-dotdotdot>
+                            <h4 class="list-article-title">
+                                <sly data-sly-test="${wcmmode.edit}"><a href="${event.path}">${event.title}</a></sly>
+                                <sly data-sly-test="${!wcmmode.edit}">${event.title}</sly>
+                            </h4>
+                            ${event.description}
+                        </div>
+                        <div class="cta-section">
+                            <sly data-sly-test="${event.link}"><a target="_blank" class="ctx-button tertiary sf-grey" href="${event.link}"><span class="signup">${'event.signup' @ i18n}</span><span class="watchnow">${'event.watchnow' @ i18n}</span></a></sly>
+                            <sly data-sly-test="${event.userType}"><span class="pill">${event.userType}</span></sly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </sly>
+        <div class="no-events">${eventComponent.noEventsTranslation @ i18n}</div>
+    </div>
+</sly>

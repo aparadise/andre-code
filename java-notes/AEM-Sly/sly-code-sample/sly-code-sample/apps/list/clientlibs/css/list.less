@@ -1,0 +1,61 @@
+@import url('/etc/designs/sharefile/clientlibs/main/css/globals.less');
+
+//-----------------------------
+//    List
+//-----------------------------
+
+@list-spotlight-card-border: 1px solid @color-grey-100;
+
+.list {
+	.spotlight {
+	   margin-bottom: 20px;
+	   
+		.info {
+			border-bottom: @list-spotlight-card-border;
+			.rem-calc(font-size,14);
+			margin-bottom: 10px;
+			
+			h3 {
+                padding: 0;
+			}
+			
+			.underline.above:before {
+                margin-bottom: 20px;
+			}
+			
+			& > div {
+                height: 210px; 
+                padding: 5px 0;
+			}
+		}
+		
+		h3 {
+		  a {
+		    color: @font-GlobalColor;
+		    .rem-calc(font-size,32);
+		    line-height: 1.4;
+		  }
+		}
+		.date {
+		  display: inline;
+		  .rem-calc(font-size,12);
+		  font-weight: bold;
+		  text-transform: uppercase;
+		}
+	}
+	.card-section {
+		height: 154px;
+		
+		h4 {
+			padding: 0;
+		}
+		
+		p {
+			.rem-calc(font-size,14);
+			padding-top: 10px;
+		}
+	}
+	.pill {
+		float: right;
+	}
+}

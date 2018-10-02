@@ -1,0 +1,18 @@
+linkedList -vs- arrayList in java.util
+
+https://www.youtube.com/watch?v=d3QbptJRln4
+
+
+there are 4 array list in the java.util: LinkedList, ArrayList, Vector, Stack.
+(vector is the least most used because its used only in multi-threaded applications)
+
+the two most that you will use are LinkedList and ArrayList.
+
+ArrayList you will have to pre guess and set the slot space of the arrays.
+
+LinkedList you do not have to preset the space it will auto point to the next ending index of the added list.
+(now searching in LinkedList is slower but uses up less memory)
+
+
+You call these two by importing the java.util.ArrayList; and the java.util.List;
+

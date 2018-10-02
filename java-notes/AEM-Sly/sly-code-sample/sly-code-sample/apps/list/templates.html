@@ -1,0 +1,52 @@
+<!--/*
+    Templates for different List Views
+*/-->
+
+<template data-sly-template.horizontalWithImage="${@ list}">
+    <div data-sly-test="${wcmmode.edit && list.isEmpty}" data-emptytext="Horizontal List" class="cq-placeholder" ></div>
+    <div data-sly-element="${list.element}" data-sly-list="${list.getList}">
+        <div class="spotlight row">
+            <div class="medium-6 columns">
+                <img src="${item.imagePath}" />
+            </div>
+            <div class="medium-6 columns">
+                <div class="info">
+                    <div data-dotdotdot>
+	                    <h3><a class="underline sf-green above" href="${item.path}">${item.title}</a></h3>
+		                <sly data-sly-test="${!wcmmode.edit}">
+		                   <p>${item.description}</p>
+	                    </sly>
+                    </div>
+                </div>
+                <span class="date">${'posted.on' @ i18n} ${item.creationDateFmt}</span>
+                <sly data-sly-test="${item.firstTag}">
+					<span class="pill">${item.firstTag}</span>
+                </sly>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template data-sly-template.imageTitle="${@ list}">
+    <div data-sly-test="${wcmmode.edit && list.isEmpty}" data-emptytext="Card List" class="cq-placeholder" ></div>
+    <ul class="large-block-grid-${list.columns}">
+		<div data-sly-element="${list.element}" data-sly-list="${list.getList}">
+	    		<li>
+		        <div class="card card-no-outline">
+		            <div class="card-image">
+		                <a href="${item.path}"><img src="${item.imagePath}" /></a>
+		            </div>
+		            <div class="card-section" data-dotdotdot>
+		                <h4><a href="${item.path}">${item.title}</a></h4>
+		                <p>${item.description}</p>
+		            </div>
+		            <div class="card-divider">
+						<sly data-sly-test="${item.firstTag}">
+							<span class="pill">${item.firstTag}</span>
+		                </sly>
+					</div>
+		        </div>
+		    </li>
+	    </div>
+    </ul>
+</template>

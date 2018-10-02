@@ -1,0 +1,19 @@
+<!--/*
+	Name:    List Container
+	Purpose: Used to display a list of page resources from child pages,
+	         tags or fixed list. List can be displayed using basic view, card view,
+	         single column view or tiled image view.
+*/-->
+
+<div data-sly-use.listComponent="com.sharefile.aem.core.components.list.ListComponent"
+     class="cq-dd-pages"
+     data-sly-use.templates="${listComponent.templatesScriptName}">
+
+    <!--/* Render the list using the chosen template, found in templates.html */-->
+    <sly data-sly-test="${listComponent.displayAs}">
+        <sly data-sly-call="${templates[listComponent.displayAs] @ list=listComponent}" />
+    </sly>
+    <sly data-sly-test="${!listComponent.displayAs}">
+        <sly data-sly-call="${templates['imageTitle'] @ list=listComponent}" />
+    </sly>
+</div>

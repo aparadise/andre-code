@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Events and Webinars"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/foundation/container">
+        <layout
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/foundation/layouts/fixedcolumns"
+            margin="{Boolean}false"/>
+        <items jcr:primaryType="nt:unstructured">
+            <column
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/foundation/container">
+                <items jcr:primaryType="nt:unstructured">                   
+                    <displayAs
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/foundation/form/select"
+                        fieldLabel="Event Type"
+                        name="./displayAs">
+                        <items jcr:primaryType="nt:unstructured">
+                            <upcomingEvents
+                                jcr:primaryType="nt:unstructured"
+                                text="Upcoming Events"
+                                selected="{Boolean}true"
+                                value="Upcoming Events"/>
+                            <upcomingWebinars
+                                jcr:primaryType="nt:unstructured"
+                                text="Upcoming Webinars"
+                                value="Upcoming Webinars"/>
+                            <previousWebinars
+                                jcr:primaryType="nt:unstructured"
+                                text="Previous Webinars"
+                                value="Previous Webinars"/>
+                            <upcomingEventsWebinars
+                                jcr:primaryType="nt:unstructured"
+                                text="Upcoming Events and Webinars"
+                                selected="{Boolean}true"
+                                value="Upcoming Events and Webinars"/>
+                        </items>
+                    </displayAs>
+                </items>
+            </column>
+        </items>
+    </content>
+</jcr:root>
