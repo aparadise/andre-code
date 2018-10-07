@@ -7,7 +7,10 @@ there information in the field.
 
 
 1) import java.util.Scanner; //so place this at the top outside your class.
-2)  Scanner sc = new Scanner(System.in); // define this inside of your class
+2)  Scanner scanner = new Scanner(System.in); // define this inside of your class
+ or 
+public static scanner = new Scanner(System.in); // define this inside of your class
+
 3)  int attackPoints = sc.nextInt(); // sc.nextInt to allow the user to type a number in the field and then auto skip to the next line in the function.
 
 full example below:

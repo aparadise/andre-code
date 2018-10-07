@@ -1,0 +1,97 @@
+command line find your file and type: nodejs app.js 
+(then hit enter and it will compile)
+
+-------
+System Events = C++ Core events is inside the 'libuv' that on top of the node.js engine.
+
+Custom Events = Javascript Core that has "Event Ennitter"
+
+------------
+Inhertance = when one object gets access to all of the properties and methods of another object.
+
+-------------
+TCP/Ip
+
+TCP = transmission control protocal. (it splits pieces into small packets and sends to the customers IP address)
+
+Web Server to the Web Browser can have several web protocals = HTTP, FTP, SMTP (these are all different types of protocals)
+
+http= web protocal
+ftp= file protocal
+smtp = mail protocal
+
+
+port info is attaced to the IP addres = 78.132.160:8080 (http://www.google.com)
+
+a node port looks like this.
+
+.listen(PORT NUMBER, 'IP Address')
+.listen(8080, '78.132.160')
+-----------------------
+
+Modules, Export and Require.
+
+1) Module= existing block of code that does not effect other code.
+
+2) Require tells the application where your file is at
+require('./greet.js')  //this will pull the greet.js into your app.js (note: './' means the file is in the same directory.)
+
+working with moudles it using the same varibles they do not collide
+they are self contained. its only called once you require it and pull it in.
+
+3) module.export = functionName //this is how you pull in a function into your module
+
+example: 
+cosnt greet = function(){
+  consol.log('hello!');
+}
+module.export = greet;
+
+
+So now in your app folder change put the require as expression.
+example:
+const greet = require('./greet.js') ;
+greet(); //this is not invoking the 'greet' variable that holdes the require code.
+
+---------
+Javascript is first class functions (meand we can pass them around)
+
+example of first class function:
+
+function foo(fn){
+   fn();
+}
+
+
+
+function hold expressions
+example:
+const foo = 1;
+
+---------------------
+
+
+
+----------
+var http = requere('http')
+
+http.createServer(function (req, res))
+
+res.writeHead(200,{'Content-Type': 'text/plain'});
+res.end.('hello world')
+}).listen (1337, '127.02.0455')
+
+------------
+
+Routing is mapping HTTP request to the content.
+
+if(re.url === '/'){
+//keep them at the root
+
+}
+
+if(req.url === '/api){
+ //the code you want to show them
+}
+
+-------------

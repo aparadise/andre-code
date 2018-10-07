@@ -1,0 +1,23 @@
+Open up the "v1co-engineering-bug-test-f" folder and on the command line run
+"npm install" inside the directory
+
+then run npm start. 
+
+
+The bugs that i found where:
+
+1) src/components/Footer.js - should be "extends" -- missing "s"
+
+2) I needed to add import LoginForm from '../components/LoginForm'; on src/containers/App.js
+
+3) I had to rename the file components/navbar.js to components/Navbar.js -- needs to match component name
+
+4) components/Navbar.js - needs to be this.state={showLoginbutt...etc, says this=
+
+5) need to add the main bootstrap library: npm install --save bootstrap@3
+
+6) clicking next doesn't do anything. this was complex
+ -- a) in App.js: need to add the line: this.handleLogin = this.handleLogin.bind(this); in the constructor. 
+ -- b) in components/LoginForm.js change where it says this.handleLogin to this.props.handleLogin (login function passed thru this.props).
+
+just that took me about an hour. sure if i did it regulary would be way faster. 
